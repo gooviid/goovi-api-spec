@@ -82,6 +82,10 @@ components:
           type: array
           items: 
             type: string
+        file_target:
+          type: array
+          items: 
+            type: string    
         request_duration:
           type: integer
         source:

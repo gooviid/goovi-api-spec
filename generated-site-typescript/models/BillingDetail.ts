@@ -24,7 +24,7 @@ export interface BillingDetail {
      * @type {number}
      * @memberof BillingDetail
      */
-    sentTotal?: number;
+    qty?: number;
     /**
      * 
      * @type {string}
@@ -55,7 +55,7 @@ export function BillingDetailFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'sentTotal': !exists(json, 'sent_total') ? undefined : json['sent_total'],
+        'qty': !exists(json, 'qty') ? undefined : json['qty'],
         'method': !exists(json, 'method') ? undefined : json['method'],
         'total': !exists(json, 'total') ? undefined : json['total'],
         'price': !exists(json, 'price') ? undefined : json['price'],
@@ -71,7 +71,7 @@ export function BillingDetailToJSON(value?: BillingDetail | null): any {
     }
     return {
         
-        'sent_total': value.sentTotal,
+        'qty': value.qty,
         'method': value.method,
         'total': value.total,
         'price': value.price,

@@ -88,6 +88,12 @@ export interface TranscodeQueue {
     resolutionTarget?: Array<string>;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof TranscodeQueue
+     */
+    fileTarget?: Array<string>;
+    /**
+     * 
      * @type {number}
      * @memberof TranscodeQueue
      */
@@ -146,6 +152,7 @@ export function TranscodeQueueFromJSONTyped(json: any, ignoreDiscriminator: bool
         'totalPrice': !exists(json, 'total_price') ? undefined : json['total_price'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'resolutionTarget': !exists(json, 'resolution_target') ? undefined : json['resolution_target'],
+        'fileTarget': !exists(json, 'file_target') ? undefined : json['file_target'],
         'requestDuration': !exists(json, 'request_duration') ? undefined : json['request_duration'],
         'source': !exists(json, 'source') ? undefined : SourceTranscodeFromJSON(json['source']),
         'destination': !exists(json, 'destination') ? undefined : SourceTranscodeFromJSON(json['destination']),
@@ -171,6 +178,7 @@ export function TranscodeQueueToJSON(value?: TranscodeQueue | null): any {
         'total_price': value.totalPrice,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'resolution_target': value.resolutionTarget,
+        'file_target': value.fileTarget,
         'request_duration': value.requestDuration,
         'source': SourceTranscodeToJSON(value.source),
         'destination': SourceTranscodeToJSON(value.destination),

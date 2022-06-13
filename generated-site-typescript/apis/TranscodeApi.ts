@@ -15,9 +15,6 @@
 
 import * as runtime from '../runtime';
 import {
-    Keys,
-    KeysFromJSON,
-    KeysToJSON,
     TranscodeQueue,
     TranscodeQueueFromJSON,
     TranscodeQueueToJSON,
@@ -35,7 +32,7 @@ export class TranscodeApi extends runtime.BaseAPI {
     /**
      * Get a transcode
      */
-    async transcodeGetRaw(requestParameters: TranscodeGetRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Keys>> {
+    async transcodeGetRaw(requestParameters: TranscodeGetRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TranscodeQueue>> {
         const queryParameters: any = {};
 
         if (requestParameters.id !== undefined) {
@@ -59,13 +56,13 @@ export class TranscodeApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => KeysFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TranscodeQueueFromJSON(jsonValue));
     }
 
     /**
      * Get a transcode
      */
-    async transcodeGet(requestParameters: TranscodeGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Keys> {
+    async transcodeGet(requestParameters: TranscodeGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TranscodeQueue> {
         const response = await this.transcodeGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
