@@ -1,0 +1,279 @@
+openapi: 3.0.3
+info:
+  title: GOOVE
+  version: "1.0"
+  description: GOOVI API Design Spec
+servers:
+  - url: "https://api.goovi.id/v1"
+paths:
+  /transcode:
+    get:
+      description: Get a transcode
+      parameters:
+        - $ref: "#/components/parameters/id"      
+      tags:
+        - transcode
+      security:
+        - ApiKey: ["status_queue"]
+      responses:
+        "200":
+          description: "Return transcode job"
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/TranscodeQueue"
+        "400":
+          $ref: "#/components/responses/ErrorOrRequestMalfunction"
+        "500":
+          $ref: "#/components/responses/ServerError"
+    post:
+      description: Create Queue
+      tags:
+        - keys
+      security:
+        - ApiKey: ["create_queue"]   
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTranscode"
+      responses:
+        "200":
+          description: "Add Succes"
+        "400":
+          $ref: "#/components/responses/ErrorOrRequestMalfunction"
+        "500":
+          $ref: "#/components/responses/ServerError"
+    delete:
+      description: Cancel Queue
+      tags:
+        - keys
+      parameters:
+        - $ref: "#/components/parameters/id"
+      security:
+        - ApiKey: ["create_queue"]   
+
+      responses:
+        "200":
+          description: "Cancel Succes"
+        "400":
+          $ref: "#/components/responses/ErrorOrRequestMalfunction"
+        "500":
+          $ref: "#/components/responses/ServerError"        
+components:
+  schemas:
+    TranscodeQueue:
+      type: object
+      properties:
+        queue_id:
+          type: string
+        queue_status:
+          type: string
+        charge_status:
+          type: string
+        total_price:
+          type: number
+        created_at:
+          type: string
+          format: date-time  
+        resolution_target:
+          type: array
+          items: 
+            type: string
+        request_duration:
+          type: integer
+        source:
+          $ref: "#/components/schemas/SourceTranscode"  
+        destination:
+          $ref: "#/components/schemas/SourceTranscode"  
+        billing_detail:
+          type: array
+          items:
+           $ref: "#/components/schemas/BillingDetail"
+        media:
+          $ref: "#/components/schemas/MediaInfo" 
+        transcode_meta:
+          $ref: "#/components/schemas/TranscodeMeta"
+        error:
+          $ref: "#/components/schemas/TranscodeError" 
+    CreateTranscode:
+      type: object
+      properties:
+        resolution_target:
+          type: array
+          items: 
+            type: string
+        file_target:
+          type: array
+          items:
+            type: string
+        callback_url:
+          type: string
+          nullable: true          
+        duration_in_second:
+          type: integer
+          nullable: true
+        source:
+          $ref: "#/components/schemas/SourceTranscode"  
+        destination:
+          $ref: "#/components/schemas/SourceTranscode"                  
+    MediaInfo:
+      type: object
+      properties:
+        created_at:
+          type: string
+          format: date-time 
+        mime:
+          type: string
+        size:
+          type: integer
+        size_human:
+          type: string
+        remote_url:
+          type: string
+        remote_relative_url:
+          type: string
+        video:
+          $ref: "#/components/schemas/VideoInfo"
+        audio:
+          $ref: "#/components/schemas/AudioInfo"
+        image:
+          $ref: "#/components/schemas/ImageInfo"
+    VideoInfo:
+      type: object
+      nullable: true
+      properties:
+        is_hdr:
+          type: boolean
+        is_multi_channel_audio:
+          type: boolean
+        width: 
+          type: integer
+        height:
+          type: integer
+        fps:
+          type: string
+        codec_name:
+          type: string
+        codec_type:
+          type: string
+        resolution_human:
+          type: string
+        bitrate:
+          type: string
+        display_aspect_ration:
+          type: string
+        aspect_ratio:
+          type: number
+        duration:
+          type: number     
+    AudioInfo:
+      type: object
+      nullable: true
+      properties:
+        bitrate:
+          type: string   
+        frequency:
+          type: string
+        type: 
+          type: string
+        channel_number:
+          type: integer
+        channel_name:
+          type: string
+        duration:
+          type: number
+        audio_channel:
+          type: number
+    ImageInfo:
+      type: object
+      nullable: true
+      properties:
+        image_type:
+          type: string
+        width: 
+          type: integer
+        height:
+          type: integer 
+    TranscodeMeta:
+      type: object
+      nullable: true
+      properties:
+        process_start_at:
+          type: string
+          format: date-time 
+        process_end_at:
+          type: string
+          format: date-time  
+        process_duration:
+          type: number
+        transcode_start_at:
+          type: string
+          format: date-time  
+        transcode_end_at:
+          type: string
+          format: date-time  
+        transcode_duration:
+          type: number
+    TranscodeError:
+      type: object
+      nullable: true
+      properties:
+        error_type:
+          type: string
+        error_cause:
+          type: string
+        error_at:
+          type: string
+          format: date-time        
+    SourceTranscode:
+      type: object
+      properties:
+        url:
+          type: string
+        isPublic:
+          type: boolean
+        access_key_id:
+          type: string
+        access_key_secret:
+          type: string
+    BillingDetail:
+      type: object
+      properties:
+        qty:
+          type: integer
+        method:
+          type: string
+        total:
+          type: number
+        price:
+          type: number          
+  responses:
+    ErrorOrRequestMalfunction:
+      description: Request Malfunction missing argument, properties or invalid data
+      content:
+        text/plain:
+          schema:
+            type: string
+    ServerError:
+      description: Server Error
+      content:
+        text/plain:
+          schema:
+            type: string
+  parameters:
+    id:
+      name: id
+      in: query
+      description: Identifier or the object
+      schema:
+        type: string
+  securitySchemes:
+    ApiKey: # arbitrary name for the security scheme
+      type: apiKey
+      in: header
+      name: X-API-KEY
+security:
+  - ApiKey: ["create_queue", "status_queue"]

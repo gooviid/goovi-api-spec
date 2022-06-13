@@ -1,0 +1,10 @@
+type: object
+properties:
+  qty:
+    type: integer
+  method:
+    type: string
+  total:
+    type: number
+  price:
+    type: numbe

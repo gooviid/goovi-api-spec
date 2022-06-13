@@ -1,0 +1,9 @@
+type: object
+nullable: true
+properties:
+  image_type:
+    type: string
+  width:
+    type: integer
+  height:
+    type: integer

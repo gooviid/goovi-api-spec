@@ -1,0 +1,10 @@
+type: object
+nullable: true
+properties:
+  error_type:
+    type: string
+  error_cause:
+    type: string
+  error_at:
+    type: string
+    format: date-time

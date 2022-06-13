@@ -1,0 +1,27 @@
+type: object
+nullable: true
+properties:
+  is_hdr:
+    type: boolean
+  is_multi_channel_audio:
+    type: boolean
+  width:
+    type: integer
+  height:
+    type: integer
+  fps:
+    type: string
+  codec_name:
+    type: string
+  codec_type:
+    type: string
+  resolution_human:
+    type: string
+  bitrate:
+    type: string
+  display_aspect_ration:
+    type: string
+  aspect_ratio:
+    type: number
+  duration:
+    type: number

@@ -1,0 +1,22 @@
+type: object
+properties:
+  created_at:
+    type: string
+    format: date-time
+  mime:
+    type: string
+  size:
+    type: integer
+  size_human:
+    type: string
+  remote_url:
+    type: string
+  remote_relative_url:
+    type: string
+  video:
+    $ref: "VideoInfo.yaml"
+  audio:
+    $ref: "AudioInfo.yaml"
+  image:
+    $ref: "ImageInfo.yaml"
+

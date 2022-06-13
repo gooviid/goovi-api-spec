@@ -1,0 +1,20 @@
+type: object
+properties:
+  resolution_target:
+    type: array
+    items:
+      type: string
+  file_target:
+    type: array
+    items:
+      type: string
+  callback_url:
+    type: string
+    nullable: true
+  duration_in_second:
+    type: integer
+    nullable: true
+  source:
+    $ref: "SourceTranscode.yaml"
+  destination:
+    $ref: "SourceTranscode.yaml"

@@ -1,0 +1,19 @@
+type: object
+nullable: true
+properties:
+  process_start_at:
+    type: string
+    format: date-time
+  process_end_at:
+    type: string
+    format: date-time
+  process_duration:
+    type: number
+  transcode_start_at:
+    type: string
+    format: date-time
+  transcode_end_at:
+    type: string
+    format: date-time
+  transcode_duration:
+    type: number

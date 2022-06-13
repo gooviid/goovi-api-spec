@@ -1,0 +1,2 @@
+TranscodeQueue:
+  $ref: "TranscodeMeta.yaml"

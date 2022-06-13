@@ -1,0 +1,17 @@
+type: object
+nullable: true
+properties:
+  bitrate:
+    type: string
+  frequency:
+    type: string
+  type:
+    type: string
+  channel_number:
+    type: integer
+  channel_name:
+    type: string
+  duration:
+    type: number
+  audio_channel:
+    type: number
