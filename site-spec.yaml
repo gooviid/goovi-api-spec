@@ -32,7 +32,7 @@ paths:
     get:
       description: Get a transcode
       parameters:
-        - $ref: "#/components/parameters/id"      
+        - $ref: "#/components/parameters/id"
       tags:
         - transcode
       security:
@@ -84,7 +84,7 @@ paths:
         "400":
           $ref: "#/components/responses/ErrorOrRequestMalfunction"
         "500":
-          $ref: "#/components/responses/ServerError" 
+          $ref: "#/components/responses/ServerError"
 
   /auth/google:
     post:
@@ -428,7 +428,7 @@ paths:
         "400":
           $ref: "#/components/responses/ErrorOrRequestMalfunction"
         "500":
-          $ref: "#/components/responses/ServerError" 
+          $ref: "#/components/responses/ServerError"
 
   /billing:
     get:
@@ -490,7 +490,7 @@ paths:
         "400":
           $ref: "#/components/responses/ErrorOrRequestMalfunction"
         "500":
-          $ref: "#/components/responses/ServerError"    
+          $ref: "#/components/responses/ServerError"
   /billing/deposit/recharge:
     post:
       description: Recharge billing
@@ -503,7 +503,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DepositRequest"  
+              $ref: "#/components/schemas/DepositRequest"
       responses:
         "200":
           description: "Return my billing charge history"
@@ -514,10 +514,10 @@ paths:
         "400":
           $ref: "#/components/responses/ErrorOrRequestMalfunction"
         "500":
-          $ref: "#/components/responses/ServerError"    
+          $ref: "#/components/responses/ServerError"
 
 components:
-  schemas: 
+  schemas:
     TranscodeQueue:
       type: object
       properties:
@@ -531,33 +531,37 @@ components:
           type: number
         created_at:
           type: string
-          format: date-time  
+          format: date-time
         resolution_target:
           type: array
-          items: 
+          items:
+            type: string
+        file_target:
+          type: array
+          items:
             type: string
         request_duration:
           type: integer
         source:
-          $ref: "#/components/schemas/SourceTranscode"  
+          $ref: "#/components/schemas/SourceTranscode"
         destination:
-          $ref: "#/components/schemas/SourceTranscode"  
+          $ref: "#/components/schemas/SourceTranscode"
         billing_detail:
           type: array
           items:
-           $ref: "#/components/schemas/BillingDetail"
+            $ref: "#/components/schemas/BillingDetail"
         media:
-          $ref: "#/components/schemas/MediaInfo" 
+          $ref: "#/components/schemas/MediaInfo"
         transcode_meta:
           $ref: "#/components/schemas/TranscodeMeta"
         error:
-          $ref: "#/components/schemas/TranscodeError" 
+          $ref: "#/components/schemas/TranscodeError"
     CreateTranscode:
       type: object
       properties:
         resolution_target:
           type: array
-          items: 
+          items:
             type: string
         file_target:
           type: array
@@ -565,20 +569,20 @@ components:
             type: string
         callback_url:
           type: string
-          nullable: true          
+          nullable: true
         duration_in_second:
           type: integer
           nullable: true
         source:
-          $ref: "#/components/schemas/SourceTranscode"  
+          $ref: "#/components/schemas/SourceTranscode"
         destination:
-          $ref: "#/components/schemas/SourceTranscode"                  
+          $ref: "#/components/schemas/SourceTranscode"
     MediaInfo:
       type: object
       properties:
         created_at:
           type: string
-          format: date-time 
+          format: date-time
         mime:
           type: string
         size:
@@ -603,7 +607,7 @@ components:
           type: boolean
         is_multi_channel_audio:
           type: boolean
-        width: 
+        width:
           type: integer
         height:
           type: integer
@@ -622,16 +626,16 @@ components:
         aspect_ratio:
           type: number
         duration:
-          type: number     
+          type: number
     AudioInfo:
       type: object
       nullable: true
       properties:
         bitrate:
-          type: string   
+          type: string
         frequency:
           type: string
-        type: 
+        type:
           type: string
         channel_number:
           type: integer
@@ -647,28 +651,28 @@ components:
       properties:
         image_type:
           type: string
-        width: 
+        width:
           type: integer
         height:
-          type: integer 
+          type: integer
     TranscodeMeta:
       type: object
       nullable: true
       properties:
         process_start_at:
           type: string
-          format: date-time 
+          format: date-time
         process_end_at:
           type: string
-          format: date-time  
+          format: date-time
         process_duration:
           type: number
         transcode_start_at:
           type: string
-          format: date-time  
+          format: date-time
         transcode_end_at:
           type: string
-          format: date-time  
+          format: date-time
         transcode_duration:
           type: number
     TranscodeError:
@@ -681,7 +685,7 @@ components:
           type: string
         error_at:
           type: string
-          format: date-time        
+          format: date-time
     SourceTranscode:
       type: object
       properties:
@@ -692,7 +696,7 @@ components:
         access_key_id:
           type: string
         access_key_secret:
-          type: string    
+          type: string
 
     DepositModel:
       type: object
@@ -702,13 +706,13 @@ components:
         amount:
           type: integer
         tax:
-          type: integer  
+          type: integer
         deposit_id:
-          type: string     
+          type: string
         status:
           type: string
         midtrans_token:
-          type: string  
+          type: string
         created_at:
           type: string
           format: date-time
@@ -721,7 +725,7 @@ components:
       type: object
       properties:
         request_amount:
-          type: integer    
+          type: integer
     ChargeHistory:
       type: object
       properties:
@@ -921,7 +925,7 @@ components:
           type: string
         appsource:
           type: string
-   
+
   responses:
     ErrorOrRequestMalfunction:
       description: Request Malfunction missing argument, properties or invalid data
@@ -954,4 +958,4 @@ components:
     Refresh:
       type: apiKey
       in: header
-      name: token          
+      name: token
