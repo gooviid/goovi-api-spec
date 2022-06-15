@@ -21,7 +21,6 @@ paths:
           content:
             application/json:
               schema:
-                type: object
                 $ref: "#/components/schemas/TranscodeQueue"
         "400":
           $ref: "#/components/responses/ErrorOrRequestMalfunction"
@@ -33,7 +32,6 @@ paths:
         - keys
       security:
         - ApiKey: ["create_queue"]   
-
       requestBody:
         content:
           application/json:
@@ -46,6 +44,7 @@ paths:
           $ref: "#/components/responses/ErrorOrRequestMalfunction"
         "500":
           $ref: "#/components/responses/ServerError"
+              
     delete:
       description: Cancel Queue
       tags:
@@ -61,9 +60,24 @@ paths:
         "400":
           $ref: "#/components/responses/ErrorOrRequestMalfunction"
         "500":
-          $ref: "#/components/responses/ServerError"        
+          $ref: "#/components/responses/ServerError"
+                      
 components:
   schemas:
+    CallbackModel:
+      type: object
+      properties:
+        is_success:
+          type: boolean
+        queue_id:
+          type: string
+        error:
+          $ref: "#/components/schemas/TranscodeError"
+        media:
+          type: array
+          nullable: true
+          items:
+            $ref: "#/components/schemas/MediaInfo"  
     TranscodeQueue:
       type: object
       properties:

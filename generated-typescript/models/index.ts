@@ -2,6 +2,7 @@
 /* eslint-disable */
 export * from './AudioInfo';
 export * from './BillingDetail';
+export * from './CallbackModel';
 export * from './CreateTranscode';
 export * from './ImageInfo';
 export * from './MediaInfo';

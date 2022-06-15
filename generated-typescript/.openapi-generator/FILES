@@ -4,6 +4,7 @@ apis/index.ts
 index.ts
 models/AudioInfo.ts
 models/BillingDetail.ts
+models/CallbackModel.ts
 models/CreateTranscode.ts
 models/ImageInfo.ts
 models/MediaInfo.ts
