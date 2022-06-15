@@ -626,7 +626,7 @@ components:
         height:
           type: integer
         fps:
-          type: string
+          type: number
         codec_name:
           type: string
         codec_type:

@@ -132,6 +132,7 @@ components:
           nullable: true          
         duration_in_second:
           type: integer
+          description: leave 0 if transcode to full duration
           nullable: true
         source:
           $ref: "#/components/schemas/SourceTranscode"  
@@ -172,7 +173,7 @@ components:
         height:
           type: integer
         fps:
-          type: string
+          type: number
         codec_name:
           type: string
         codec_type:

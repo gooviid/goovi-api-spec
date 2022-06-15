@@ -1,0 +1,516 @@
+openapi: 3.0.3
+info:
+  description: GOOVI API Design Spec
+  title: GOOVE
+  version: "1.0"
+servers:
+- url: https://api.goovi.id/v1
+security:
+- ApiKey:
+  - create_queue
+  - status_queue
+paths:
+  /transcode:
+    delete:
+      description: Cancel Queue
+      parameters:
+      - description: Identifier or the object
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          description: Cancel Succes
+        "400":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Request Malfunction missing argument, properties or invalid\
+            \ data"
+        "500":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Server Error
+      security:
+      - ApiKey:
+        - create_queue
+      tags:
+      - keys
+    get:
+      description: Get a transcode
+      parameters:
+      - description: Identifier or the object
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscodeQueue'
+          description: Return transcode job
+        "400":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Request Malfunction missing argument, properties or invalid\
+            \ data"
+        "500":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Server Error
+      security:
+      - ApiKey:
+        - status_queue
+      tags:
+      - transcode
+    post:
+      description: Create Queue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTranscode'
+      responses:
+        "200":
+          description: Add Succes
+        "400":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Request Malfunction missing argument, properties or invalid\
+            \ data"
+        "500":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Server Error
+      security:
+      - ApiKey:
+        - create_queue
+      tags:
+      - keys
+components:
+  parameters:
+    id:
+      description: Identifier or the object
+      explode: true
+      in: query
+      name: id
+      required: false
+      schema:
+        type: string
+      style: form
+  responses:
+    ErrorOrRequestMalfunction:
+      content:
+        text/plain:
+          schema:
+            type: string
+      description: "Request Malfunction missing argument, properties or invalid data"
+    ServerError:
+      content:
+        text/plain:
+          schema:
+            type: string
+      description: Server Error
+  schemas:
+    CallbackModel:
+      properties:
+        is_success:
+          type: boolean
+        queue_id:
+          type: string
+        error:
+          $ref: '#/components/schemas/TranscodeError'
+        media:
+          items:
+            $ref: '#/components/schemas/MediaInfo'
+          nullable: true
+          type: array
+      type: object
+    TranscodeQueue:
+      example:
+        queue_status: queue_status
+        total_price: 0.8008281904610115
+        resolution_target:
+        - resolution_target
+        - resolution_target
+        destination:
+          access_key_id: access_key_id
+          access_key_secret: access_key_secret
+          isPublic: true
+          url: url
+        created_at: 2000-01-23T04:56:07.000+00:00
+        source:
+          access_key_id: access_key_id
+          access_key_secret: access_key_secret
+          isPublic: true
+          url: url
+        media:
+          remote_url: remote_url
+          image:
+            width: 1
+            image_type: image_type
+            height: 6
+          size: 2
+          mime: mime
+          created_at: 2000-01-23T04:56:07.000+00:00
+          video:
+            duration: 4.145608029883936
+            aspect_ratio: 2.027123023002322
+            display_aspect_ration: display_aspect_ration
+            is_multi_channel_audio: true
+            width: 7
+            fps: 3.616076749251911
+            bitrate: bitrate
+            codec_type: codec_type
+            resolution_human: resolution_human
+            is_hdr: true
+            height: 9
+            codec_name: codec_name
+          audio:
+            channel_name: channel_name
+            duration: 1.2315135367772556
+            audio_channel: 1.0246457001441578
+            bitrate: bitrate
+            type: type
+            frequency: frequency
+            channel_number: 7
+          remote_relative_url: remote_relative_url
+          size_human: size_human
+        error:
+          error_type: error_type
+          error_cause: error_cause
+          error_at: 2000-01-23T04:56:07.000+00:00
+        charge_status: charge_status
+        request_duration: 6
+        transcode_meta:
+          process_duration: 7.457744773683766
+          transcode_end_at: 2000-01-23T04:56:07.000+00:00
+          transcode_duration: 1.1730742509559433
+          process_end_at: 2000-01-23T04:56:07.000+00:00
+          transcode_start_at: 2000-01-23T04:56:07.000+00:00
+          process_start_at: 2000-01-23T04:56:07.000+00:00
+        file_target:
+        - file_target
+        - file_target
+        billing_detail:
+        - total: 5.962133916683182
+          method: method
+          price: 5.637376656633329
+          qty: 1
+        - total: 5.962133916683182
+          method: method
+          price: 5.637376656633329
+          qty: 1
+        queue_id: queue_id
+      properties:
+        queue_id:
+          type: string
+        queue_status:
+          type: string
+        charge_status:
+          type: string
+        total_price:
+          type: number
+        created_at:
+          format: date-time
+          type: string
+        resolution_target:
+          items:
+            type: string
+          type: array
+        file_target:
+          items:
+            type: string
+          type: array
+        request_duration:
+          type: integer
+        source:
+          $ref: '#/components/schemas/SourceTranscode'
+        destination:
+          $ref: '#/components/schemas/SourceTranscode'
+        billing_detail:
+          items:
+            $ref: '#/components/schemas/BillingDetail'
+          type: array
+        media:
+          $ref: '#/components/schemas/MediaInfo'
+        transcode_meta:
+          $ref: '#/components/schemas/TranscodeMeta'
+        error:
+          $ref: '#/components/schemas/TranscodeError'
+      type: object
+    CreateTranscode:
+      example:
+        callback_url: callback_url
+        resolution_target:
+        - resolution_target
+        - resolution_target
+        file_target:
+        - file_target
+        - file_target
+        destination:
+          access_key_id: access_key_id
+          access_key_secret: access_key_secret
+          isPublic: true
+          url: url
+        source:
+          access_key_id: access_key_id
+          access_key_secret: access_key_secret
+          isPublic: true
+          url: url
+        duration_in_second: 0
+      properties:
+        resolution_target:
+          items:
+            type: string
+          type: array
+        file_target:
+          items:
+            type: string
+          type: array
+        callback_url:
+          nullable: true
+          type: string
+        duration_in_second:
+          description: leave 0 if transcode to full duration
+          nullable: true
+          type: integer
+        source:
+          $ref: '#/components/schemas/SourceTranscode'
+        destination:
+          $ref: '#/components/schemas/SourceTranscode'
+      type: object
+    MediaInfo:
+      example:
+        remote_url: remote_url
+        image:
+          width: 1
+          image_type: image_type
+          height: 6
+        size: 2
+        mime: mime
+        created_at: 2000-01-23T04:56:07.000+00:00
+        video:
+          duration: 4.145608029883936
+          aspect_ratio: 2.027123023002322
+          display_aspect_ration: display_aspect_ration
+          is_multi_channel_audio: true
+          width: 7
+          fps: 3.616076749251911
+          bitrate: bitrate
+          codec_type: codec_type
+          resolution_human: resolution_human
+          is_hdr: true
+          height: 9
+          codec_name: codec_name
+        audio:
+          channel_name: channel_name
+          duration: 1.2315135367772556
+          audio_channel: 1.0246457001441578
+          bitrate: bitrate
+          type: type
+          frequency: frequency
+          channel_number: 7
+        remote_relative_url: remote_relative_url
+        size_human: size_human
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        mime:
+          type: string
+        size:
+          type: integer
+        size_human:
+          type: string
+        remote_url:
+          type: string
+        remote_relative_url:
+          type: string
+        video:
+          $ref: '#/components/schemas/VideoInfo'
+        audio:
+          $ref: '#/components/schemas/AudioInfo'
+        image:
+          $ref: '#/components/schemas/ImageInfo'
+      type: object
+    VideoInfo:
+      example:
+        duration: 4.145608029883936
+        aspect_ratio: 2.027123023002322
+        display_aspect_ration: display_aspect_ration
+        is_multi_channel_audio: true
+        width: 7
+        fps: 3.616076749251911
+        bitrate: bitrate
+        codec_type: codec_type
+        resolution_human: resolution_human
+        is_hdr: true
+        height: 9
+        codec_name: codec_name
+      nullable: true
+      properties:
+        is_hdr:
+          type: boolean
+        is_multi_channel_audio:
+          type: boolean
+        width:
+          type: integer
+        height:
+          type: integer
+        fps:
+          type: number
+        codec_name:
+          type: string
+        codec_type:
+          type: string
+        resolution_human:
+          type: string
+        bitrate:
+          type: string
+        display_aspect_ration:
+          type: string
+        aspect_ratio:
+          type: number
+        duration:
+          type: number
+      type: object
+    AudioInfo:
+      example:
+        channel_name: channel_name
+        duration: 1.2315135367772556
+        audio_channel: 1.0246457001441578
+        bitrate: bitrate
+        type: type
+        frequency: frequency
+        channel_number: 7
+      nullable: true
+      properties:
+        bitrate:
+          type: string
+        frequency:
+          type: string
+        type:
+          type: string
+        channel_number:
+          type: integer
+        channel_name:
+          type: string
+        duration:
+          type: number
+        audio_channel:
+          type: number
+      type: object
+    ImageInfo:
+      example:
+        width: 1
+        image_type: image_type
+        height: 6
+      nullable: true
+      properties:
+        image_type:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      type: object
+    TranscodeMeta:
+      example:
+        process_duration: 7.457744773683766
+        transcode_end_at: 2000-01-23T04:56:07.000+00:00
+        transcode_duration: 1.1730742509559433
+        process_end_at: 2000-01-23T04:56:07.000+00:00
+        transcode_start_at: 2000-01-23T04:56:07.000+00:00
+        process_start_at: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        process_start_at:
+          format: date-time
+          type: string
+        process_end_at:
+          format: date-time
+          type: string
+        process_duration:
+          type: number
+        transcode_start_at:
+          format: date-time
+          type: string
+        transcode_end_at:
+          format: date-time
+          type: string
+        transcode_duration:
+          type: number
+      type: object
+    TranscodeError:
+      example:
+        error_type: error_type
+        error_cause: error_cause
+        error_at: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        error_type:
+          type: string
+        error_cause:
+          type: string
+        error_at:
+          format: date-time
+          type: string
+      type: object
+    SourceTranscode:
+      example:
+        access_key_id: access_key_id
+        access_key_secret: access_key_secret
+        isPublic: true
+        url: url
+      properties:
+        url:
+          type: string
+        isPublic:
+          type: boolean
+        access_key_id:
+          type: string
+        access_key_secret:
+          type: string
+      type: object
+    BillingDetail:
+      example:
+        total: 5.962133916683182
+        method: method
+        price: 5.637376656633329
+        qty: 1
+      properties:
+        qty:
+          type: integer
+        method:
+          type: string
+        total:
+          type: number
+        price:
+          type: number
+      type: object
+  securitySchemes:
+    ApiKey:
+      in: header
+      name: X-API-KEY
+      type: apiKey

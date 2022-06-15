@@ -45,10 +45,10 @@ export interface VideoInfo {
     height?: number;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof VideoInfo
      */
-    fps?: string;
+    fps?: number;
     /**
      * 
      * @type {string}

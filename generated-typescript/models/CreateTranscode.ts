@@ -45,7 +45,7 @@ export interface CreateTranscode {
      */
     callbackUrl?: string | null;
     /**
-     * 
+     * leave 0 if transcode to full duration
      * @type {number}
      * @memberof CreateTranscode
      */
