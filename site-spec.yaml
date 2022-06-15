@@ -518,6 +518,20 @@ paths:
 
 components:
   schemas:
+    CallbackModel:
+      type: object
+      properties:
+        is_success:
+          type: boolean
+        queue_id:
+          type: string
+        error:
+          $ref: "#/components/schemas/TranscodeError"
+        media:
+          type: array
+          nullable: true
+          items:
+            $ref: "#/components/schemas/MediaInfo" 
     TranscodeQueue:
       type: object
       properties:

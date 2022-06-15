@@ -3,6 +3,7 @@
 export * from './ApproveUser';
 export * from './AudioInfo';
 export * from './BillingDetail';
+export * from './CallbackModel';
 export * from './ChargeHistory';
 export * from './CreateTranscode';
 export * from './DepositModel';
