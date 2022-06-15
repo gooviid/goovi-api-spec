@@ -24,6 +24,11 @@
             "command": "openapi-generator-cli generate -i ./api-spec.yaml -g typescript-fetch -o ./generated-typescript"
         },
         {
+            "label": "Generate GO",
+            "type": "shell",
+            "command": "openapi-generator-cli generate -i ./api-spec.yaml -g go -o ./generated-go"
+        },
+        {
             "label": "Generate SITE TS",
             "type": "shell",
             "command": "openapi-generator-cli generate -i ./site-spec.yaml -g typescript-fetch -o ./generated-site-typescript"
