@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Video** | Pointer to [**NullableVideoInfo**](VideoInfo.md) |  | [optional] 
 **Audio** | Pointer to [**NullableAudioInfo**](AudioInfo.md) |  | [optional] 
 **Image** | Pointer to [**NullableImageInfo**](ImageInfo.md) |  | [optional] 
+**AdaptiveStreaming** | Pointer to [**NullableAdaptiveStreamingInfo**](AdaptiveStreamingInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -288,6 +289,41 @@ HasImage returns a boolean if a field has been set.
 `func (o *MediaInfo) UnsetImage()`
 
 UnsetImage ensures that no value is present for Image, not even an explicit nil
+### GetAdaptiveStreaming
+
+`func (o *MediaInfo) GetAdaptiveStreaming() AdaptiveStreamingInfo`
+
+GetAdaptiveStreaming returns the AdaptiveStreaming field if non-nil, zero value otherwise.
+
+### GetAdaptiveStreamingOk
+
+`func (o *MediaInfo) GetAdaptiveStreamingOk() (*AdaptiveStreamingInfo, bool)`
+
+GetAdaptiveStreamingOk returns a tuple with the AdaptiveStreaming field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdaptiveStreaming
+
+`func (o *MediaInfo) SetAdaptiveStreaming(v AdaptiveStreamingInfo)`
+
+SetAdaptiveStreaming sets AdaptiveStreaming field to given value.
+
+### HasAdaptiveStreaming
+
+`func (o *MediaInfo) HasAdaptiveStreaming() bool`
+
+HasAdaptiveStreaming returns a boolean if a field has been set.
+
+### SetAdaptiveStreamingNil
+
+`func (o *MediaInfo) SetAdaptiveStreamingNil(b bool)`
+
+ SetAdaptiveStreamingNil sets the value for AdaptiveStreaming to be an explicit nil
+
+### UnsetAdaptiveStreaming
+`func (o *MediaInfo) UnsetAdaptiveStreaming()`
+
+UnsetAdaptiveStreaming ensures that no value is present for AdaptiveStreaming, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

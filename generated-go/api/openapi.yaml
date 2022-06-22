@@ -171,6 +171,14 @@ components:
             image_type: image_type
             height: 6
           size: 2
+          adaptive_streaming:
+            duration: 1.1730742509559433
+            aspect_ratio: 7.457744773683766
+            is_video: true
+            file_type: file_type
+            display_aspect_ratio: display_aspect_ratio
+            fps: 4.965218492984954
+            type: type
           mime: mime
           created_at: 2000-01-23T04:56:07.000+00:00
           video:
@@ -203,9 +211,9 @@ components:
         charge_status: charge_status
         request_duration: 6
         transcode_meta:
-          process_duration: 7.457744773683766
+          process_duration: 5.025004791520295
           transcode_end_at: 2000-01-23T04:56:07.000+00:00
-          transcode_duration: 1.1730742509559433
+          transcode_duration: 9.965781217890562
           process_end_at: 2000-01-23T04:56:07.000+00:00
           transcode_start_at: 2000-01-23T04:56:07.000+00:00
           process_start_at: 2000-01-23T04:56:07.000+00:00
@@ -308,6 +316,14 @@ components:
           image_type: image_type
           height: 6
         size: 2
+        adaptive_streaming:
+          duration: 1.1730742509559433
+          aspect_ratio: 7.457744773683766
+          is_video: true
+          file_type: file_type
+          display_aspect_ratio: display_aspect_ratio
+          fps: 4.965218492984954
+          type: type
         mime: mime
         created_at: 2000-01-23T04:56:07.000+00:00
         video:
@@ -353,6 +369,8 @@ components:
           $ref: '#/components/schemas/AudioInfo'
         image:
           $ref: '#/components/schemas/ImageInfo'
+        adaptive_streaming:
+          $ref: '#/components/schemas/AdaptiveStreamingInfo'
       type: object
     VideoInfo:
       example:
@@ -435,11 +453,40 @@ components:
         height:
           type: integer
       type: object
+    AdaptiveStreamingInfo:
+      example:
+        duration: 1.1730742509559433
+        aspect_ratio: 7.457744773683766
+        is_video: true
+        file_type: file_type
+        display_aspect_ratio: display_aspect_ratio
+        fps: 4.965218492984954
+        type: type
+      nullable: true
+      properties:
+        type:
+          type: string
+        file_type:
+          type: string
+        is_video:
+          type: boolean
+        display_aspect_ratio:
+          nullable: true
+          type: string
+        aspect_ratio:
+          nullable: true
+          type: number
+        duration:
+          type: number
+        fps:
+          nullable: true
+          type: number
+      type: object
     TranscodeMeta:
       example:
-        process_duration: 7.457744773683766
+        process_duration: 5.025004791520295
         transcode_end_at: 2000-01-23T04:56:07.000+00:00
-        transcode_duration: 1.1730742509559433
+        transcode_duration: 9.965781217890562
         process_end_at: 2000-01-23T04:56:07.000+00:00
         transcode_start_at: 2000-01-23T04:56:07.000+00:00
         process_start_at: 2000-01-23T04:56:07.000+00:00

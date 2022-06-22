@@ -2,6 +2,7 @@ apis/KeysApi.ts
 apis/TranscodeApi.ts
 apis/index.ts
 index.ts
+models/AdaptiveStreamingInfo.ts
 models/AudioInfo.ts
 models/BillingDetail.ts
 models/CallbackModel.ts

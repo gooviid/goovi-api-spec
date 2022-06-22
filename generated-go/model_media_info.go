@@ -26,6 +26,7 @@ type MediaInfo struct {
 	Video NullableVideoInfo `json:"video,omitempty"`
 	Audio NullableAudioInfo `json:"audio,omitempty"`
 	Image NullableImageInfo `json:"image,omitempty"`
+	AdaptiveStreaming NullableAdaptiveStreamingInfo `json:"adaptive_streaming,omitempty"`
 }
 
 // NewMediaInfo instantiates a new MediaInfo object
@@ -363,6 +364,48 @@ func (o *MediaInfo) UnsetImage() {
 	o.Image.Unset()
 }
 
+// GetAdaptiveStreaming returns the AdaptiveStreaming field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MediaInfo) GetAdaptiveStreaming() AdaptiveStreamingInfo {
+	if o == nil || o.AdaptiveStreaming.Get() == nil {
+		var ret AdaptiveStreamingInfo
+		return ret
+	}
+	return *o.AdaptiveStreaming.Get()
+}
+
+// GetAdaptiveStreamingOk returns a tuple with the AdaptiveStreaming field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MediaInfo) GetAdaptiveStreamingOk() (*AdaptiveStreamingInfo, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdaptiveStreaming.Get(), o.AdaptiveStreaming.IsSet()
+}
+
+// HasAdaptiveStreaming returns a boolean if a field has been set.
+func (o *MediaInfo) HasAdaptiveStreaming() bool {
+	if o != nil && o.AdaptiveStreaming.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdaptiveStreaming gets a reference to the given NullableAdaptiveStreamingInfo and assigns it to the AdaptiveStreaming field.
+func (o *MediaInfo) SetAdaptiveStreaming(v AdaptiveStreamingInfo) {
+	o.AdaptiveStreaming.Set(&v)
+}
+// SetAdaptiveStreamingNil sets the value for AdaptiveStreaming to be an explicit nil
+func (o *MediaInfo) SetAdaptiveStreamingNil() {
+	o.AdaptiveStreaming.Set(nil)
+}
+
+// UnsetAdaptiveStreaming ensures that no value is present for AdaptiveStreaming, not even an explicit nil
+func (o *MediaInfo) UnsetAdaptiveStreaming() {
+	o.AdaptiveStreaming.Unset()
+}
+
 func (o MediaInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CreatedAt != nil {
@@ -391,6 +434,9 @@ func (o MediaInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.Image.IsSet() {
 		toSerialize["image"] = o.Image.Get()
+	}
+	if o.AdaptiveStreaming.IsSet() {
+		toSerialize["adaptive_streaming"] = o.AdaptiveStreaming.Get()
 	}
 	return json.Marshal(toSerialize)
 }

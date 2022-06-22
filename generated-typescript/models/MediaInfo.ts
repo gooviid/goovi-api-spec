@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    AdaptiveStreamingInfo,
+    AdaptiveStreamingInfoFromJSON,
+    AdaptiveStreamingInfoFromJSONTyped,
+    AdaptiveStreamingInfoToJSON,
+} from './AdaptiveStreamingInfo';
+import {
     AudioInfo,
     AudioInfoFromJSON,
     AudioInfoFromJSONTyped,
@@ -92,6 +98,12 @@ export interface MediaInfo {
      * @memberof MediaInfo
      */
     image?: ImageInfo | null;
+    /**
+     * 
+     * @type {AdaptiveStreamingInfo}
+     * @memberof MediaInfo
+     */
+    adaptiveStreaming?: AdaptiveStreamingInfo | null;
 }
 
 export function MediaInfoFromJSON(json: any): MediaInfo {
@@ -113,6 +125,7 @@ export function MediaInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'video': !exists(json, 'video') ? undefined : VideoInfoFromJSON(json['video']),
         'audio': !exists(json, 'audio') ? undefined : AudioInfoFromJSON(json['audio']),
         'image': !exists(json, 'image') ? undefined : ImageInfoFromJSON(json['image']),
+        'adaptiveStreaming': !exists(json, 'adaptive_streaming') ? undefined : AdaptiveStreamingInfoFromJSON(json['adaptive_streaming']),
     };
 }
 
@@ -134,6 +147,7 @@ export function MediaInfoToJSON(value?: MediaInfo | null): any {
         'video': VideoInfoToJSON(value.video),
         'audio': AudioInfoToJSON(value.audio),
         'image': ImageInfoToJSON(value.image),
+        'adaptive_streaming': AdaptiveStreamingInfoToJSON(value.adaptiveStreaming),
     };
 }
 

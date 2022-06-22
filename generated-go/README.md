@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AdaptiveStreamingInfo](docs/AdaptiveStreamingInfo.md)
  - [AudioInfo](docs/AudioInfo.md)
  - [BillingDetail](docs/BillingDetail.md)
  - [CallbackModel](docs/CallbackModel.md)

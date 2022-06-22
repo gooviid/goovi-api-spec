@@ -160,6 +160,8 @@ components:
           $ref: "#/components/schemas/AudioInfo"
         image:
           $ref: "#/components/schemas/ImageInfo"
+        adaptive_streaming:
+          $ref: "#/components/schemas/AdaptiveStreamingInfo"            
     VideoInfo:
       type: object
       nullable: true
@@ -216,6 +218,27 @@ components:
           type: integer
         height:
           type: integer 
+    AdaptiveStreamingInfo:
+      type: object
+      nullable: true
+      properties:
+        type:
+          type: string
+        file_type:
+          type: string
+        is_video:
+          type: boolean
+        display_aspect_ratio: 
+          type: string
+          nullable: true
+        aspect_ratio:
+          type: number
+          nullable: true
+        duration:
+          type: number
+        fps:  
+          type: number  
+          nullable: true      
     TranscodeMeta:
       type: object
       nullable: true

@@ -6,6 +6,7 @@ api_keys.go
 api_transcode.go
 client.go
 configuration.go
+docs/AdaptiveStreamingInfo.md
 docs/AudioInfo.md
 docs/BillingDetail.md
 docs/CallbackModel.md
@@ -22,6 +23,7 @@ docs/VideoInfo.md
 git_push.sh
 go.mod
 go.sum
+model_adaptive_streaming_info.go
 model_audio_info.go
 model_billing_detail.go
 model_callback_model.go

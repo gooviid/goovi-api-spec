@@ -5,6 +5,7 @@ apis/TeamApi.ts
 apis/TranscodeApi.ts
 apis/index.ts
 index.ts
+models/AdaptiveStreamingInfo.ts
 models/ApproveUser.ts
 models/AudioInfo.ts
 models/BillingDetail.ts

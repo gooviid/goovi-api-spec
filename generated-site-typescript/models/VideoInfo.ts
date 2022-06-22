@@ -78,7 +78,7 @@ export interface VideoInfo {
      * @type {string}
      * @memberof VideoInfo
      */
-    displayAspectRation?: string;
+    displayAspectRatio?: string;
     /**
      * 
      * @type {number}
@@ -112,7 +112,7 @@ export function VideoInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'codecType': !exists(json, 'codec_type') ? undefined : json['codec_type'],
         'resolutionHuman': !exists(json, 'resolution_human') ? undefined : json['resolution_human'],
         'bitrate': !exists(json, 'bitrate') ? undefined : json['bitrate'],
-        'displayAspectRation': !exists(json, 'display_aspect_ration') ? undefined : json['display_aspect_ration'],
+        'displayAspectRatio': !exists(json, 'display_aspect_ratio') ? undefined : json['display_aspect_ratio'],
         'aspectRatio': !exists(json, 'aspect_ratio') ? undefined : json['aspect_ratio'],
         'duration': !exists(json, 'duration') ? undefined : json['duration'],
     };
@@ -136,7 +136,7 @@ export function VideoInfoToJSON(value?: VideoInfo | null): any {
         'codec_type': value.codecType,
         'resolution_human': value.resolutionHuman,
         'bitrate': value.bitrate,
-        'display_aspect_ration': value.displayAspectRation,
+        'display_aspect_ratio': value.displayAspectRatio,
         'aspect_ratio': value.aspectRatio,
         'duration': value.duration,
     };

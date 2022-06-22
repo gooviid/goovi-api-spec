@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+export * from './AdaptiveStreamingInfo';
 export * from './AudioInfo';
 export * from './BillingDetail';
 export * from './CallbackModel';
