@@ -605,6 +605,9 @@ components:
         callback_url:
           type: string
           nullable: true
+        mute:
+          type: boolean
+          description: Mute Video    
         duration_in_second:
           type: integer
           nullable: true

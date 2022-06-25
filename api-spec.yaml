@@ -134,7 +134,10 @@ components:
             type: string
         callback_url:
           type: string
-          nullable: true          
+          nullable: true    
+        mute:
+          type: boolean
+          description: Mute Video        
         duration_in_second:
           type: integer
           description: leave 0 if transcode to full duration

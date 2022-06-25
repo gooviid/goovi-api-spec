@@ -20,6 +20,8 @@ type CreateTranscode struct {
 	ResolutionTarget []string `json:"resolution_target,omitempty"`
 	FileTarget []string `json:"file_target,omitempty"`
 	CallbackUrl NullableString `json:"callback_url,omitempty"`
+	// Mute Video
+	Mute *bool `json:"mute,omitempty"`
 	// leave 0 if transcode to full duration
 	DurationInSecond NullableInt32 `json:"duration_in_second,omitempty"`
 	Source *SourceTranscode `json:"source,omitempty"`
@@ -181,6 +183,38 @@ func (o *CreateTranscode) UnsetCallbackUrl() {
 	o.CallbackUrl.Unset()
 }
 
+// GetMute returns the Mute field value if set, zero value otherwise.
+func (o *CreateTranscode) GetMute() bool {
+	if o == nil || o.Mute == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Mute
+}
+
+// GetMuteOk returns a tuple with the Mute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTranscode) GetMuteOk() (*bool, bool) {
+	if o == nil || o.Mute == nil {
+		return nil, false
+	}
+	return o.Mute, true
+}
+
+// HasMute returns a boolean if a field has been set.
+func (o *CreateTranscode) HasMute() bool {
+	if o != nil && o.Mute != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMute gets a reference to the given bool and assigns it to the Mute field.
+func (o *CreateTranscode) SetMute(v bool) {
+	o.Mute = &v
+}
+
 // GetDurationInSecond returns the DurationInSecond field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateTranscode) GetDurationInSecond() int32 {
 	if o == nil || o.DurationInSecond.Get() == nil {
@@ -300,6 +334,9 @@ func (o CreateTranscode) MarshalJSON() ([]byte, error) {
 	}
 	if o.CallbackUrl.IsSet() {
 		toSerialize["callback_url"] = o.CallbackUrl.Get()
+	}
+	if o.Mute != nil {
+		toSerialize["mute"] = o.Mute
 	}
 	if o.DurationInSecond.IsSet() {
 		toSerialize["duration_in_second"] = o.DurationInSecond.Get()

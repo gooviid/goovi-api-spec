@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ResolutionTarget** | Pointer to **[]string** |  | [optional] 
 **FileTarget** | Pointer to **[]string** |  | [optional] 
 **CallbackUrl** | Pointer to **NullableString** |  | [optional] 
+**Mute** | Pointer to **bool** | Mute Video | [optional] 
 **DurationInSecond** | Pointer to **NullableInt32** | leave 0 if transcode to full duration | [optional] 
 **Source** | Pointer to [**SourceTranscode**](SourceTranscode.md) |  | [optional] 
 **Destination** | Pointer to [**SourceTranscode**](SourceTranscode.md) |  | [optional] 
@@ -141,6 +142,31 @@ HasCallbackUrl returns a boolean if a field has been set.
 `func (o *CreateTranscode) UnsetCallbackUrl()`
 
 UnsetCallbackUrl ensures that no value is present for CallbackUrl, not even an explicit nil
+### GetMute
+
+`func (o *CreateTranscode) GetMute() bool`
+
+GetMute returns the Mute field if non-nil, zero value otherwise.
+
+### GetMuteOk
+
+`func (o *CreateTranscode) GetMuteOk() (*bool, bool)`
+
+GetMuteOk returns a tuple with the Mute field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMute
+
+`func (o *CreateTranscode) SetMute(v bool)`
+
+SetMute sets Mute field to given value.
+
+### HasMute
+
+`func (o *CreateTranscode) HasMute() bool`
+
+HasMute returns a boolean if a field has been set.
+
 ### GetDurationInSecond
 
 `func (o *CreateTranscode) GetDurationInSecond() int32`

@@ -278,6 +278,7 @@ components:
           access_key_secret: access_key_secret
           isPublic: true
           url: url
+        mute: true
         source:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
@@ -299,6 +300,9 @@ components:
         callback_url:
           nullable: true
           type: string
+        mute:
+          description: Mute Video
+          type: boolean
         duration_in_second:
           description: leave 0 if transcode to full duration
           nullable: true

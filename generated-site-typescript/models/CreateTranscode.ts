@@ -51,6 +51,12 @@ export interface CreateTranscode {
      */
     callbackUrl?: string | null;
     /**
+     * Mute Video
+     * @type {boolean}
+     * @memberof CreateTranscode
+     */
+    mute?: boolean;
+    /**
      * 
      * @type {number}
      * @memberof CreateTranscode
@@ -84,6 +90,7 @@ export function CreateTranscodeFromJSONTyped(json: any, ignoreDiscriminator: boo
         'resolutionTarget': !exists(json, 'resolution_target') ? undefined : json['resolution_target'],
         'fileTarget': !exists(json, 'file_target') ? undefined : json['file_target'],
         'callbackUrl': !exists(json, 'callback_url') ? undefined : json['callback_url'],
+        'mute': !exists(json, 'mute') ? undefined : json['mute'],
         'durationInSecond': !exists(json, 'duration_in_second') ? undefined : json['duration_in_second'],
         'source': !exists(json, 'source') ? undefined : SourceTranscodeFromJSON(json['source']),
         'destination': !exists(json, 'destination') ? undefined : SourceTranscodeFromJSON(json['destination']),
@@ -103,6 +110,7 @@ export function CreateTranscodeToJSON(value?: CreateTranscode | null): any {
         'resolution_target': value.resolutionTarget,
         'file_target': value.fileTarget,
         'callback_url': value.callbackUrl,
+        'mute': value.mute,
         'duration_in_second': value.durationInSecond,
         'source': SourceTranscodeToJSON(value.source),
         'destination': SourceTranscodeToJSON(value.destination),
