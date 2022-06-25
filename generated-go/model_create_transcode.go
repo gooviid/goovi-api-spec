@@ -16,6 +16,7 @@ import (
 
 // CreateTranscode struct for CreateTranscode
 type CreateTranscode struct {
+	MerchantGivenId *string `json:"merchant_given_id,omitempty"`
 	ResolutionTarget []string `json:"resolution_target,omitempty"`
 	FileTarget []string `json:"file_target,omitempty"`
 	CallbackUrl NullableString `json:"callback_url,omitempty"`
@@ -40,6 +41,38 @@ func NewCreateTranscode() *CreateTranscode {
 func NewCreateTranscodeWithDefaults() *CreateTranscode {
 	this := CreateTranscode{}
 	return &this
+}
+
+// GetMerchantGivenId returns the MerchantGivenId field value if set, zero value otherwise.
+func (o *CreateTranscode) GetMerchantGivenId() string {
+	if o == nil || o.MerchantGivenId == nil {
+		var ret string
+		return ret
+	}
+	return *o.MerchantGivenId
+}
+
+// GetMerchantGivenIdOk returns a tuple with the MerchantGivenId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTranscode) GetMerchantGivenIdOk() (*string, bool) {
+	if o == nil || o.MerchantGivenId == nil {
+		return nil, false
+	}
+	return o.MerchantGivenId, true
+}
+
+// HasMerchantGivenId returns a boolean if a field has been set.
+func (o *CreateTranscode) HasMerchantGivenId() bool {
+	if o != nil && o.MerchantGivenId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMerchantGivenId gets a reference to the given string and assigns it to the MerchantGivenId field.
+func (o *CreateTranscode) SetMerchantGivenId(v string) {
+	o.MerchantGivenId = &v
 }
 
 // GetResolutionTarget returns the ResolutionTarget field value if set, zero value otherwise.
@@ -256,6 +289,9 @@ func (o *CreateTranscode) SetDestination(v SourceTranscode) {
 
 func (o CreateTranscode) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.MerchantGivenId != nil {
+		toSerialize["merchant_given_id"] = o.MerchantGivenId
+	}
 	if o.ResolutionTarget != nil {
 		toSerialize["resolution_target"] = o.ResolutionTarget
 	}

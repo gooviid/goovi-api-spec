@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**MerchantGivenId** | Pointer to **string** |  | [optional] 
 **ResolutionTarget** | Pointer to **[]string** |  | [optional] 
 **FileTarget** | Pointer to **[]string** |  | [optional] 
 **CallbackUrl** | Pointer to **NullableString** |  | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewCreateTranscodeWithDefaults instantiates a new CreateTranscode object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMerchantGivenId
+
+`func (o *CreateTranscode) GetMerchantGivenId() string`
+
+GetMerchantGivenId returns the MerchantGivenId field if non-nil, zero value otherwise.
+
+### GetMerchantGivenIdOk
+
+`func (o *CreateTranscode) GetMerchantGivenIdOk() (*string, bool)`
+
+GetMerchantGivenIdOk returns a tuple with the MerchantGivenId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMerchantGivenId
+
+`func (o *CreateTranscode) SetMerchantGivenId(v string)`
+
+SetMerchantGivenId sets MerchantGivenId field to given value.
+
+### HasMerchantGivenId
+
+`func (o *CreateTranscode) HasMerchantGivenId() bool`
+
+HasMerchantGivenId returns a boolean if a field has been set.
 
 ### GetResolutionTarget
 

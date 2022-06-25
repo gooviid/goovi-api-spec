@@ -6,6 +6,7 @@ export * from './AudioInfo';
 export * from './BillingDetail';
 export * from './CallbackModel';
 export * from './ChargeHistory';
+export * from './CreateCompress';
 export * from './CreateTranscode';
 export * from './DepositModel';
 export * from './DepositRequest';

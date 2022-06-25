@@ -78,8 +78,8 @@ All URIs are relative to *https://api.goovi.id/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*KeysApi* | [**TranscodeDelete**](docs/KeysApi.md#transcodedelete) | **Delete** /transcode | 
 *KeysApi* | [**TranscodePost**](docs/KeysApi.md#transcodepost) | **Post** /transcode | 
+*TranscodeApi* | [**CompressPost**](docs/TranscodeApi.md#compresspost) | **Post** /compress | 
 *TranscodeApi* | [**TranscodeGet**](docs/TranscodeApi.md#transcodeget) | **Get** /transcode | 
 
 
@@ -89,6 +89,7 @@ Class | Method | HTTP request | Description
  - [AudioInfo](docs/AudioInfo.md)
  - [BillingDetail](docs/BillingDetail.md)
  - [CallbackModel](docs/CallbackModel.md)
+ - [CreateCompress](docs/CreateCompress.md)
  - [CreateTranscode](docs/CreateTranscode.md)
  - [ImageInfo](docs/ImageInfo.md)
  - [MediaInfo](docs/MediaInfo.md)

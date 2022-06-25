@@ -84,6 +84,25 @@ paths:
         "400":
           $ref: "#/components/responses/ErrorOrRequestMalfunction"
         "500":
+            $ref: "#/components/responses/ServerError"
+  /compress:
+    post:
+      description: Create Compress
+      tags:
+        - transcode
+      security:
+        - ApiKey: ["create_queue"]   
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCompress"
+      responses:
+        "200":
+          description: "Add Succes"
+        "400":
+          $ref: "#/components/responses/ErrorOrRequestMalfunction"
+        "500":
           $ref: "#/components/responses/ServerError"
 
   /auth/google:
@@ -573,6 +592,8 @@ components:
     CreateTranscode:
       type: object
       properties:
+        merchant_given_id:
+          type: string
         resolution_target:
           type: array
           items:
@@ -591,6 +612,18 @@ components:
           $ref: "#/components/schemas/SourceTranscode"
         destination:
           $ref: "#/components/schemas/SourceTranscode"
+    CreateCompress:
+      type: object
+      properties:
+        merchant_given_id:
+          type: string
+        callback_url:
+          type: string
+          nullable: true          
+        source:
+          $ref: "#/components/schemas/SourceTranscode"  
+        destination:
+          $ref: "#/components/schemas/SourceTranscode"      
     MediaInfo:
       type: object
       properties:

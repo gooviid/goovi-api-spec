@@ -4,6 +4,7 @@ export * from './AdaptiveStreamingInfo';
 export * from './AudioInfo';
 export * from './BillingDetail';
 export * from './CallbackModel';
+export * from './CreateCompress';
 export * from './CreateTranscode';
 export * from './ImageInfo';
 export * from './MediaInfo';

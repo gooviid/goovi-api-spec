@@ -28,6 +28,12 @@ import {
 export interface CreateTranscode {
     /**
      * 
+     * @type {string}
+     * @memberof CreateTranscode
+     */
+    merchantGivenId?: string;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof CreateTranscode
      */
@@ -74,6 +80,7 @@ export function CreateTranscodeFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
+        'merchantGivenId': !exists(json, 'merchant_given_id') ? undefined : json['merchant_given_id'],
         'resolutionTarget': !exists(json, 'resolution_target') ? undefined : json['resolution_target'],
         'fileTarget': !exists(json, 'file_target') ? undefined : json['file_target'],
         'callbackUrl': !exists(json, 'callback_url') ? undefined : json['callback_url'],
@@ -92,6 +99,7 @@ export function CreateTranscodeToJSON(value?: CreateTranscode | null): any {
     }
     return {
         
+        'merchant_given_id': value.merchantGivenId,
         'resolution_target': value.resolutionTarget,
         'file_target': value.fileTarget,
         'callback_url': value.callbackUrl,

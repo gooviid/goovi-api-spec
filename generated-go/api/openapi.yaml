@@ -11,38 +11,6 @@ security:
   - status_queue
 paths:
   /transcode:
-    delete:
-      description: Cancel Queue
-      parameters:
-      - description: Identifier or the object
-        explode: true
-        in: query
-        name: id
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          description: Cancel Succes
-        "400":
-          content:
-            text/plain:
-              schema:
-                type: string
-          description: "Request Malfunction missing argument, properties or invalid\
-            \ data"
-        "500":
-          content:
-            text/plain:
-              schema:
-                type: string
-          description: Server Error
-      security:
-      - ApiKey:
-        - create_queue
-      tags:
-      - keys
     get:
       description: Get a transcode
       parameters:
@@ -107,6 +75,35 @@ paths:
         - create_queue
       tags:
       - keys
+  /compress:
+    post:
+      description: Create Compress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCompress'
+      responses:
+        "200":
+          description: Add Succes
+        "400":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Request Malfunction missing argument, properties or invalid\
+            \ data"
+        "500":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Server Error
+      security:
+      - ApiKey:
+        - create_queue
+      tags:
+      - transcode
 components:
   parameters:
     id:
@@ -287,7 +284,10 @@ components:
           isPublic: true
           url: url
         duration_in_second: 0
+        merchant_given_id: merchant_given_id
       properties:
+        merchant_given_id:
+          type: string
         resolution_target:
           items:
             type: string
@@ -303,6 +303,31 @@ components:
           description: leave 0 if transcode to full duration
           nullable: true
           type: integer
+        source:
+          $ref: '#/components/schemas/SourceTranscode'
+        destination:
+          $ref: '#/components/schemas/SourceTranscode'
+      type: object
+    CreateCompress:
+      example:
+        callback_url: callback_url
+        destination:
+          access_key_id: access_key_id
+          access_key_secret: access_key_secret
+          isPublic: true
+          url: url
+        source:
+          access_key_id: access_key_id
+          access_key_secret: access_key_secret
+          isPublic: true
+          url: url
+        merchant_given_id: merchant_given_id
+      properties:
+        merchant_given_id:
+          type: string
+        callback_url:
+          nullable: true
+          type: string
         source:
           $ref: '#/components/schemas/SourceTranscode'
         destination:

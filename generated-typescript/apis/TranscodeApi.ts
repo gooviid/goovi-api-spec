@@ -15,10 +15,17 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateCompress,
+    CreateCompressFromJSON,
+    CreateCompressToJSON,
     TranscodeQueue,
     TranscodeQueueFromJSON,
     TranscodeQueueToJSON,
 } from '../models';
+
+export interface CompressPostRequest {
+    createCompress?: CreateCompress;
+}
 
 export interface TranscodeGetRequest {
     id?: string;
@@ -28,6 +35,38 @@ export interface TranscodeGetRequest {
  * 
  */
 export class TranscodeApi extends runtime.BaseAPI {
+
+    /**
+     * Create Compress
+     */
+    async compressPostRaw(requestParameters: CompressPostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-API-KEY"] = this.configuration.apiKey("X-API-KEY"); // ApiKey authentication
+        }
+
+        const response = await this.request({
+            path: `/compress`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateCompressToJSON(requestParameters.createCompress),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Create Compress
+     */
+    async compressPost(requestParameters: CompressPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+        await this.compressPostRaw(requestParameters, initOverrides);
+    }
 
     /**
      * Get a transcode

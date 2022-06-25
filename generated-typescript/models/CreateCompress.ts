@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Goovi ID
- * GOOVI ID Website spec
+ * GOOVE
+ * GOOVI API Design Spec
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -23,74 +23,53 @@ import {
 /**
  * 
  * @export
- * @interface CreateTranscode
+ * @interface CreateCompress
  */
-export interface CreateTranscode {
+export interface CreateCompress {
     /**
      * 
      * @type {string}
-     * @memberof CreateTranscode
+     * @memberof CreateCompress
      */
     merchantGivenId?: string;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CreateTranscode
-     */
-    resolutionTarget?: Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof CreateTranscode
-     */
-    fileTarget?: Array<string>;
-    /**
-     * 
      * @type {string}
-     * @memberof CreateTranscode
+     * @memberof CreateCompress
      */
     callbackUrl?: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof CreateTranscode
-     */
-    durationInSecond?: number | null;
-    /**
-     * 
      * @type {SourceTranscode}
-     * @memberof CreateTranscode
+     * @memberof CreateCompress
      */
     source?: SourceTranscode;
     /**
      * 
      * @type {SourceTranscode}
-     * @memberof CreateTranscode
+     * @memberof CreateCompress
      */
     destination?: SourceTranscode;
 }
 
-export function CreateTranscodeFromJSON(json: any): CreateTranscode {
-    return CreateTranscodeFromJSONTyped(json, false);
+export function CreateCompressFromJSON(json: any): CreateCompress {
+    return CreateCompressFromJSONTyped(json, false);
 }
 
-export function CreateTranscodeFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateTranscode {
+export function CreateCompressFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateCompress {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'merchantGivenId': !exists(json, 'merchant_given_id') ? undefined : json['merchant_given_id'],
-        'resolutionTarget': !exists(json, 'resolution_target') ? undefined : json['resolution_target'],
-        'fileTarget': !exists(json, 'file_target') ? undefined : json['file_target'],
         'callbackUrl': !exists(json, 'callback_url') ? undefined : json['callback_url'],
-        'durationInSecond': !exists(json, 'duration_in_second') ? undefined : json['duration_in_second'],
         'source': !exists(json, 'source') ? undefined : SourceTranscodeFromJSON(json['source']),
         'destination': !exists(json, 'destination') ? undefined : SourceTranscodeFromJSON(json['destination']),
     };
 }
 
-export function CreateTranscodeToJSON(value?: CreateTranscode | null): any {
+export function CreateCompressToJSON(value?: CreateCompress | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -100,10 +79,7 @@ export function CreateTranscodeToJSON(value?: CreateTranscode | null): any {
     return {
         
         'merchant_given_id': value.merchantGivenId,
-        'resolution_target': value.resolutionTarget,
-        'file_target': value.fileTarget,
         'callback_url': value.callbackUrl,
-        'duration_in_second': value.durationInSecond,
         'source': SourceTranscodeToJSON(value.source),
         'destination': SourceTranscodeToJSON(value.destination),
     };

@@ -20,10 +20,6 @@ import {
     CreateTranscodeToJSON,
 } from '../models';
 
-export interface TranscodeDeleteRequest {
-    id?: string;
-}
-
 export interface TranscodePostRequest {
     createTranscode?: CreateTranscode;
 }
@@ -32,39 +28,6 @@ export interface TranscodePostRequest {
  * 
  */
 export class KeysApi extends runtime.BaseAPI {
-
-    /**
-     * Cancel Queue
-     */
-    async transcodeDeleteRaw(requestParameters: TranscodeDeleteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        if (requestParameters.id !== undefined) {
-            queryParameters['id'] = requestParameters.id;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-API-KEY"] = this.configuration.apiKey("X-API-KEY"); // ApiKey authentication
-        }
-
-        const response = await this.request({
-            path: `/transcode`,
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * Cancel Queue
-     */
-    async transcodeDelete(requestParameters: TranscodeDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
-        await this.transcodeDeleteRaw(requestParameters, initOverrides);
-    }
 
     /**
      * Create Queue
