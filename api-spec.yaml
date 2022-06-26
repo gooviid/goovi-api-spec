@@ -153,7 +153,11 @@ components:
           type: string
         callback_url:
           type: string
-          nullable: true          
+          nullable: true       
+        sizes:
+          type: array
+          items:
+            type: integer     
         source:
           $ref: "#/components/schemas/SourceTranscode"  
         destination:
