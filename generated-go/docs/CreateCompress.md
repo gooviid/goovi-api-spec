@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MerchantGivenId** | Pointer to **string** |  | [optional] 
 **CallbackUrl** | Pointer to **NullableString** |  | [optional] 
+**Sizes** | Pointer to **[]int32** |  | [optional] 
 **Source** | Pointer to [**SourceTranscode**](SourceTranscode.md) |  | [optional] 
 **Destination** | Pointer to [**SourceTranscode**](SourceTranscode.md) |  | [optional] 
 
@@ -88,6 +89,31 @@ HasCallbackUrl returns a boolean if a field has been set.
 `func (o *CreateCompress) UnsetCallbackUrl()`
 
 UnsetCallbackUrl ensures that no value is present for CallbackUrl, not even an explicit nil
+### GetSizes
+
+`func (o *CreateCompress) GetSizes() []int32`
+
+GetSizes returns the Sizes field if non-nil, zero value otherwise.
+
+### GetSizesOk
+
+`func (o *CreateCompress) GetSizesOk() (*[]int32, bool)`
+
+GetSizesOk returns a tuple with the Sizes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSizes
+
+`func (o *CreateCompress) SetSizes(v []int32)`
+
+SetSizes sets Sizes field to given value.
+
+### HasSizes
+
+`func (o *CreateCompress) HasSizes() bool`
+
+HasSizes returns a boolean if a field has been set.
+
 ### GetSource
 
 `func (o *CreateCompress) GetSource() SourceTranscode`

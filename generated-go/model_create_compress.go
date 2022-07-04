@@ -18,6 +18,7 @@ import (
 type CreateCompress struct {
 	MerchantGivenId *string `json:"merchant_given_id,omitempty"`
 	CallbackUrl NullableString `json:"callback_url,omitempty"`
+	Sizes []int32 `json:"sizes,omitempty"`
 	Source *SourceTranscode `json:"source,omitempty"`
 	Destination *SourceTranscode `json:"destination,omitempty"`
 }
@@ -113,6 +114,38 @@ func (o *CreateCompress) UnsetCallbackUrl() {
 	o.CallbackUrl.Unset()
 }
 
+// GetSizes returns the Sizes field value if set, zero value otherwise.
+func (o *CreateCompress) GetSizes() []int32 {
+	if o == nil || o.Sizes == nil {
+		var ret []int32
+		return ret
+	}
+	return o.Sizes
+}
+
+// GetSizesOk returns a tuple with the Sizes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateCompress) GetSizesOk() ([]int32, bool) {
+	if o == nil || o.Sizes == nil {
+		return nil, false
+	}
+	return o.Sizes, true
+}
+
+// HasSizes returns a boolean if a field has been set.
+func (o *CreateCompress) HasSizes() bool {
+	if o != nil && o.Sizes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSizes gets a reference to the given []int32 and assigns it to the Sizes field.
+func (o *CreateCompress) SetSizes(v []int32) {
+	o.Sizes = v
+}
+
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *CreateCompress) GetSource() SourceTranscode {
 	if o == nil || o.Source == nil {
@@ -184,6 +217,9 @@ func (o CreateCompress) MarshalJSON() ([]byte, error) {
 	}
 	if o.CallbackUrl.IsSet() {
 		toSerialize["callback_url"] = o.CallbackUrl.Get()
+	}
+	if o.Sizes != nil {
+		toSerialize["sizes"] = o.Sizes
 	}
 	if o.Source != nil {
 		toSerialize["source"] = o.Source
