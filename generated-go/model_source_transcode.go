@@ -17,7 +17,6 @@ import (
 // SourceTranscode struct for SourceTranscode
 type SourceTranscode struct {
 	Url *string `json:"url,omitempty"`
-	IsPublic *bool `json:"isPublic,omitempty"`
 	AccessKeyId *string `json:"access_key_id,omitempty"`
 	AccessKeySecret *string `json:"access_key_secret,omitempty"`
 }
@@ -69,38 +68,6 @@ func (o *SourceTranscode) HasUrl() bool {
 // SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *SourceTranscode) SetUrl(v string) {
 	o.Url = &v
-}
-
-// GetIsPublic returns the IsPublic field value if set, zero value otherwise.
-func (o *SourceTranscode) GetIsPublic() bool {
-	if o == nil || o.IsPublic == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsPublic
-}
-
-// GetIsPublicOk returns a tuple with the IsPublic field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SourceTranscode) GetIsPublicOk() (*bool, bool) {
-	if o == nil || o.IsPublic == nil {
-		return nil, false
-	}
-	return o.IsPublic, true
-}
-
-// HasIsPublic returns a boolean if a field has been set.
-func (o *SourceTranscode) HasIsPublic() bool {
-	if o != nil && o.IsPublic != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIsPublic gets a reference to the given bool and assigns it to the IsPublic field.
-func (o *SourceTranscode) SetIsPublic(v bool) {
-	o.IsPublic = &v
 }
 
 // GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
@@ -171,9 +138,6 @@ func (o SourceTranscode) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
-	}
-	if o.IsPublic != nil {
-		toSerialize["isPublic"] = o.IsPublic
 	}
 	if o.AccessKeyId != nil {
 		toSerialize["access_key_id"] = o.AccessKeyId

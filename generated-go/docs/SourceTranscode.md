@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | Pointer to **string** |  | [optional] 
-**IsPublic** | Pointer to **bool** |  | [optional] 
 **AccessKeyId** | Pointer to **string** |  | [optional] 
 **AccessKeySecret** | Pointer to **string** |  | [optional] 
 
@@ -52,31 +51,6 @@ SetUrl sets Url field to given value.
 `func (o *SourceTranscode) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
-
-### GetIsPublic
-
-`func (o *SourceTranscode) GetIsPublic() bool`
-
-GetIsPublic returns the IsPublic field if non-nil, zero value otherwise.
-
-### GetIsPublicOk
-
-`func (o *SourceTranscode) GetIsPublicOk() (*bool, bool)`
-
-GetIsPublicOk returns a tuple with the IsPublic field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsPublic
-
-`func (o *SourceTranscode) SetIsPublic(v bool)`
-
-SetIsPublic sets IsPublic field to given value.
-
-### HasIsPublic
-
-`func (o *SourceTranscode) HasIsPublic() bool`
-
-HasIsPublic returns a boolean if a field has been set.
 
 ### GetAccessKeyId
 

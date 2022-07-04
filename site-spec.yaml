@@ -764,8 +764,6 @@ components:
       properties:
         url:
           type: string
-        isPublic:
-          type: boolean
         access_key_id:
           type: string
         access_key_secret:

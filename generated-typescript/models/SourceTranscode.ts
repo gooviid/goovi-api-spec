@@ -27,12 +27,6 @@ export interface SourceTranscode {
     url?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof SourceTranscode
-     */
-    isPublic?: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof SourceTranscode
      */
@@ -56,7 +50,6 @@ export function SourceTranscodeFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'url': !exists(json, 'url') ? undefined : json['url'],
-        'isPublic': !exists(json, 'isPublic') ? undefined : json['isPublic'],
         'accessKeyId': !exists(json, 'access_key_id') ? undefined : json['access_key_id'],
         'accessKeySecret': !exists(json, 'access_key_secret') ? undefined : json['access_key_secret'],
     };
@@ -72,7 +65,6 @@ export function SourceTranscodeToJSON(value?: SourceTranscode | null): any {
     return {
         
         'url': value.url,
-        'isPublic': value.isPublic,
         'access_key_id': value.accessKeyId,
         'access_key_secret': value.accessKeySecret,
     };

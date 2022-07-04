@@ -153,13 +153,11 @@ components:
         destination:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
-          isPublic: true
           url: url
         created_at: 2000-01-23T04:56:07.000+00:00
         source:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
-          isPublic: true
           url: url
         media:
           remote_url: remote_url
@@ -276,13 +274,11 @@ components:
         destination:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
-          isPublic: true
           url: url
         mute: true
         source:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
-          isPublic: true
           url: url
         duration_in_second: 0
         merchant_given_id: merchant_given_id
@@ -318,12 +314,10 @@ components:
         destination:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
-          isPublic: true
           url: url
         source:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
-          isPublic: true
           url: url
         merchant_given_id: merchant_given_id
       properties:
@@ -557,13 +551,10 @@ components:
       example:
         access_key_id: access_key_id
         access_key_secret: access_key_secret
-        isPublic: true
         url: url
       properties:
         url:
           type: string
-        isPublic:
-          type: boolean
         access_key_id:
           type: string
         access_key_secret:
