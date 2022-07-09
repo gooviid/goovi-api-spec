@@ -40,6 +40,12 @@ export interface CreateCompress {
     callbackUrl?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof CreateCompress
+     */
+    callbackData?: string | null;
+    /**
+     * 
      * @type {Array<number>}
      * @memberof CreateCompress
      */
@@ -70,6 +76,7 @@ export function CreateCompressFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'merchantGivenId': !exists(json, 'merchant_given_id') ? undefined : json['merchant_given_id'],
         'callbackUrl': !exists(json, 'callback_url') ? undefined : json['callback_url'],
+        'callbackData': !exists(json, 'callback_data') ? undefined : json['callback_data'],
         'sizes': !exists(json, 'sizes') ? undefined : json['sizes'],
         'source': !exists(json, 'source') ? undefined : SourceTranscodeFromJSON(json['source']),
         'destination': !exists(json, 'destination') ? undefined : SourceTranscodeFromJSON(json['destination']),
@@ -87,6 +94,7 @@ export function CreateCompressToJSON(value?: CreateCompress | null): any {
         
         'merchant_given_id': value.merchantGivenId,
         'callback_url': value.callbackUrl,
+        'callback_data': value.callbackData,
         'sizes': value.sizes,
         'source': SourceTranscodeToJSON(value.source),
         'destination': SourceTranscodeToJSON(value.destination),

@@ -203,6 +203,7 @@ components:
           error_type: error_type
           error_cause: error_cause
           error_at: 2000-01-23T04:56:07.000+00:00
+        merchant_given_id: merchant_given_id
         charge_status: charge_status
         request_duration: 6
         transcode_meta:
@@ -227,6 +228,8 @@ components:
         queue_id: queue_id
       properties:
         queue_id:
+          type: string
+        merchant_given_id:
           type: string
         queue_status:
           type: string
@@ -276,6 +279,7 @@ components:
           access_key_secret: access_key_secret
           url: url
         mute: true
+        callback_data: callback_data
         source:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
@@ -294,6 +298,10 @@ components:
             type: string
           type: array
         callback_url:
+          nullable: true
+          type: string
+        callback_data:
+          format: base64
           nullable: true
           type: string
         mute:
@@ -318,6 +326,7 @@ components:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
           url: url
+        callback_data: callback_data
         source:
           access_key_id: access_key_id
           access_key_secret: access_key_secret
@@ -327,6 +336,10 @@ components:
         merchant_given_id:
           type: string
         callback_url:
+          nullable: true
+          type: string
+        callback_data:
+          format: base64
           nullable: true
           type: string
         sizes:

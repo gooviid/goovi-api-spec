@@ -18,6 +18,7 @@ import (
 type CreateCompress struct {
 	MerchantGivenId *string `json:"merchant_given_id,omitempty"`
 	CallbackUrl NullableString `json:"callback_url,omitempty"`
+	CallbackData NullableString `json:"callback_data,omitempty"`
 	Sizes []int32 `json:"sizes,omitempty"`
 	Source *SourceTranscode `json:"source,omitempty"`
 	Destination *SourceTranscode `json:"destination,omitempty"`
@@ -112,6 +113,48 @@ func (o *CreateCompress) SetCallbackUrlNil() {
 // UnsetCallbackUrl ensures that no value is present for CallbackUrl, not even an explicit nil
 func (o *CreateCompress) UnsetCallbackUrl() {
 	o.CallbackUrl.Unset()
+}
+
+// GetCallbackData returns the CallbackData field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateCompress) GetCallbackData() string {
+	if o == nil || o.CallbackData.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.CallbackData.Get()
+}
+
+// GetCallbackDataOk returns a tuple with the CallbackData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateCompress) GetCallbackDataOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CallbackData.Get(), o.CallbackData.IsSet()
+}
+
+// HasCallbackData returns a boolean if a field has been set.
+func (o *CreateCompress) HasCallbackData() bool {
+	if o != nil && o.CallbackData.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCallbackData gets a reference to the given NullableString and assigns it to the CallbackData field.
+func (o *CreateCompress) SetCallbackData(v string) {
+	o.CallbackData.Set(&v)
+}
+// SetCallbackDataNil sets the value for CallbackData to be an explicit nil
+func (o *CreateCompress) SetCallbackDataNil() {
+	o.CallbackData.Set(nil)
+}
+
+// UnsetCallbackData ensures that no value is present for CallbackData, not even an explicit nil
+func (o *CreateCompress) UnsetCallbackData() {
+	o.CallbackData.Unset()
 }
 
 // GetSizes returns the Sizes field value if set, zero value otherwise.
@@ -217,6 +260,9 @@ func (o CreateCompress) MarshalJSON() ([]byte, error) {
 	}
 	if o.CallbackUrl.IsSet() {
 		toSerialize["callback_url"] = o.CallbackUrl.Get()
+	}
+	if o.CallbackData.IsSet() {
+		toSerialize["callback_data"] = o.CallbackData.Get()
 	}
 	if o.Sizes != nil {
 		toSerialize["sizes"] = o.Sizes

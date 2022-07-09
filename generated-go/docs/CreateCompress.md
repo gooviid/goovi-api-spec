@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MerchantGivenId** | Pointer to **string** |  | [optional] 
 **CallbackUrl** | Pointer to **NullableString** |  | [optional] 
+**CallbackData** | Pointer to **NullableString** |  | [optional] 
 **Sizes** | Pointer to **[]int32** |  | [optional] 
 **Source** | Pointer to [**SourceTranscode**](SourceTranscode.md) |  | [optional] 
 **Destination** | Pointer to [**SourceTranscode**](SourceTranscode.md) |  | [optional] 
@@ -89,6 +90,41 @@ HasCallbackUrl returns a boolean if a field has been set.
 `func (o *CreateCompress) UnsetCallbackUrl()`
 
 UnsetCallbackUrl ensures that no value is present for CallbackUrl, not even an explicit nil
+### GetCallbackData
+
+`func (o *CreateCompress) GetCallbackData() string`
+
+GetCallbackData returns the CallbackData field if non-nil, zero value otherwise.
+
+### GetCallbackDataOk
+
+`func (o *CreateCompress) GetCallbackDataOk() (*string, bool)`
+
+GetCallbackDataOk returns a tuple with the CallbackData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCallbackData
+
+`func (o *CreateCompress) SetCallbackData(v string)`
+
+SetCallbackData sets CallbackData field to given value.
+
+### HasCallbackData
+
+`func (o *CreateCompress) HasCallbackData() bool`
+
+HasCallbackData returns a boolean if a field has been set.
+
+### SetCallbackDataNil
+
+`func (o *CreateCompress) SetCallbackDataNil(b bool)`
+
+ SetCallbackDataNil sets the value for CallbackData to be an explicit nil
+
+### UnsetCallbackData
+`func (o *CreateCompress) UnsetCallbackData()`
+
+UnsetCallbackData ensures that no value is present for CallbackData, not even an explicit nil
 ### GetSizes
 
 `func (o *CreateCompress) GetSizes() []int32`

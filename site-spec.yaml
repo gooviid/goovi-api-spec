@@ -607,6 +607,10 @@ components:
         callback_url:
           type: string
           nullable: true
+        callback_data:
+          type: string
+          format: base64
+          nullable: true  
         mute:
           type: boolean
           description: Mute Video    
@@ -625,6 +629,10 @@ components:
         callback_url:
           type: string
           nullable: true  
+        callback_data:
+          type: string
+          format: base64
+          nullable: true    
         sizes:
           type: array
           items:

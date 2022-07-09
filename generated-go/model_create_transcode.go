@@ -20,6 +20,7 @@ type CreateTranscode struct {
 	ResolutionTarget []string `json:"resolution_target,omitempty"`
 	FileTarget []string `json:"file_target,omitempty"`
 	CallbackUrl NullableString `json:"callback_url,omitempty"`
+	CallbackData NullableString `json:"callback_data,omitempty"`
 	// Mute Video
 	Mute *bool `json:"mute,omitempty"`
 	// leave 0 if transcode to full duration
@@ -183,6 +184,48 @@ func (o *CreateTranscode) UnsetCallbackUrl() {
 	o.CallbackUrl.Unset()
 }
 
+// GetCallbackData returns the CallbackData field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateTranscode) GetCallbackData() string {
+	if o == nil || o.CallbackData.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.CallbackData.Get()
+}
+
+// GetCallbackDataOk returns a tuple with the CallbackData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateTranscode) GetCallbackDataOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CallbackData.Get(), o.CallbackData.IsSet()
+}
+
+// HasCallbackData returns a boolean if a field has been set.
+func (o *CreateTranscode) HasCallbackData() bool {
+	if o != nil && o.CallbackData.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCallbackData gets a reference to the given NullableString and assigns it to the CallbackData field.
+func (o *CreateTranscode) SetCallbackData(v string) {
+	o.CallbackData.Set(&v)
+}
+// SetCallbackDataNil sets the value for CallbackData to be an explicit nil
+func (o *CreateTranscode) SetCallbackDataNil() {
+	o.CallbackData.Set(nil)
+}
+
+// UnsetCallbackData ensures that no value is present for CallbackData, not even an explicit nil
+func (o *CreateTranscode) UnsetCallbackData() {
+	o.CallbackData.Unset()
+}
+
 // GetMute returns the Mute field value if set, zero value otherwise.
 func (o *CreateTranscode) GetMute() bool {
 	if o == nil || o.Mute == nil {
@@ -334,6 +377,9 @@ func (o CreateTranscode) MarshalJSON() ([]byte, error) {
 	}
 	if o.CallbackUrl.IsSet() {
 		toSerialize["callback_url"] = o.CallbackUrl.Get()
+	}
+	if o.CallbackData.IsSet() {
+		toSerialize["callback_data"] = o.CallbackData.Get()
 	}
 	if o.Mute != nil {
 		toSerialize["mute"] = o.Mute

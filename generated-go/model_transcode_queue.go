@@ -18,6 +18,7 @@ import (
 // TranscodeQueue struct for TranscodeQueue
 type TranscodeQueue struct {
 	QueueId *string `json:"queue_id,omitempty"`
+	MerchantGivenId *string `json:"merchant_given_id,omitempty"`
 	QueueStatus *string `json:"queue_status,omitempty"`
 	ChargeStatus *string `json:"charge_status,omitempty"`
 	TotalPrice *float32 `json:"total_price,omitempty"`
@@ -80,6 +81,38 @@ func (o *TranscodeQueue) HasQueueId() bool {
 // SetQueueId gets a reference to the given string and assigns it to the QueueId field.
 func (o *TranscodeQueue) SetQueueId(v string) {
 	o.QueueId = &v
+}
+
+// GetMerchantGivenId returns the MerchantGivenId field value if set, zero value otherwise.
+func (o *TranscodeQueue) GetMerchantGivenId() string {
+	if o == nil || o.MerchantGivenId == nil {
+		var ret string
+		return ret
+	}
+	return *o.MerchantGivenId
+}
+
+// GetMerchantGivenIdOk returns a tuple with the MerchantGivenId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscodeQueue) GetMerchantGivenIdOk() (*string, bool) {
+	if o == nil || o.MerchantGivenId == nil {
+		return nil, false
+	}
+	return o.MerchantGivenId, true
+}
+
+// HasMerchantGivenId returns a boolean if a field has been set.
+func (o *TranscodeQueue) HasMerchantGivenId() bool {
+	if o != nil && o.MerchantGivenId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMerchantGivenId gets a reference to the given string and assigns it to the MerchantGivenId field.
+func (o *TranscodeQueue) SetMerchantGivenId(v string) {
+	o.MerchantGivenId = &v
 }
 
 // GetQueueStatus returns the QueueStatus field value if set, zero value otherwise.
@@ -522,6 +555,9 @@ func (o TranscodeQueue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.QueueId != nil {
 		toSerialize["queue_id"] = o.QueueId
+	}
+	if o.MerchantGivenId != nil {
+		toSerialize["merchant_given_id"] = o.MerchantGivenId
 	}
 	if o.QueueStatus != nil {
 		toSerialize["queue_status"] = o.QueueStatus

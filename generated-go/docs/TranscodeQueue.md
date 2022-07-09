@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **QueueId** | Pointer to **string** |  | [optional] 
+**MerchantGivenId** | Pointer to **string** |  | [optional] 
 **QueueStatus** | Pointer to **string** |  | [optional] 
 **ChargeStatus** | Pointer to **string** |  | [optional] 
 **TotalPrice** | Pointer to **float32** |  | [optional] 
@@ -62,6 +63,31 @@ SetQueueId sets QueueId field to given value.
 `func (o *TranscodeQueue) HasQueueId() bool`
 
 HasQueueId returns a boolean if a field has been set.
+
+### GetMerchantGivenId
+
+`func (o *TranscodeQueue) GetMerchantGivenId() string`
+
+GetMerchantGivenId returns the MerchantGivenId field if non-nil, zero value otherwise.
+
+### GetMerchantGivenIdOk
+
+`func (o *TranscodeQueue) GetMerchantGivenIdOk() (*string, bool)`
+
+GetMerchantGivenIdOk returns a tuple with the MerchantGivenId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMerchantGivenId
+
+`func (o *TranscodeQueue) SetMerchantGivenId(v string)`
+
+SetMerchantGivenId sets MerchantGivenId field to given value.
+
+### HasMerchantGivenId
+
+`func (o *TranscodeQueue) HasMerchantGivenId() bool`
+
+HasMerchantGivenId returns a boolean if a field has been set.
 
 ### GetQueueStatus
 

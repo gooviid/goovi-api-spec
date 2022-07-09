@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ResolutionTarget** | Pointer to **[]string** |  | [optional] 
 **FileTarget** | Pointer to **[]string** |  | [optional] 
 **CallbackUrl** | Pointer to **NullableString** |  | [optional] 
+**CallbackData** | Pointer to **NullableString** |  | [optional] 
 **Mute** | Pointer to **bool** | Mute Video | [optional] 
 **DurationInSecond** | Pointer to **NullableInt32** | leave 0 if transcode to full duration | [optional] 
 **Source** | Pointer to [**SourceTranscode**](SourceTranscode.md) |  | [optional] 
@@ -142,6 +143,41 @@ HasCallbackUrl returns a boolean if a field has been set.
 `func (o *CreateTranscode) UnsetCallbackUrl()`
 
 UnsetCallbackUrl ensures that no value is present for CallbackUrl, not even an explicit nil
+### GetCallbackData
+
+`func (o *CreateTranscode) GetCallbackData() string`
+
+GetCallbackData returns the CallbackData field if non-nil, zero value otherwise.
+
+### GetCallbackDataOk
+
+`func (o *CreateTranscode) GetCallbackDataOk() (*string, bool)`
+
+GetCallbackDataOk returns a tuple with the CallbackData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCallbackData
+
+`func (o *CreateTranscode) SetCallbackData(v string)`
+
+SetCallbackData sets CallbackData field to given value.
+
+### HasCallbackData
+
+`func (o *CreateTranscode) HasCallbackData() bool`
+
+HasCallbackData returns a boolean if a field has been set.
+
+### SetCallbackDataNil
+
+`func (o *CreateTranscode) SetCallbackDataNil(b bool)`
+
+ SetCallbackDataNil sets the value for CallbackData to be an explicit nil
+
+### UnsetCallbackData
+`func (o *CreateTranscode) UnsetCallbackData()`
+
+UnsetCallbackData ensures that no value is present for CallbackData, not even an explicit nil
 ### GetMute
 
 `func (o *CreateTranscode) GetMute() bool`
