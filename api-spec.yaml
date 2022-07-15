@@ -29,7 +29,7 @@ paths:
     post:
       description: Create Queue
       tags:
-        - keys
+        - transcode
       security:
         - ApiKey: ["create_queue"]   
       requestBody:
