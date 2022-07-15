@@ -26,7 +26,7 @@
         {
             "label": "Generate SITE TS",
             "type": "shell",
-            "command": "openapi-generator-cli generate -i ./site-spec.yaml -g typescript-fetch -o ./generated-site-typescript"
+            "command": "openapi-generator-cli generate -i ./site-spec.yaml -g typescript-fetch -o ./generated-site-typescript --additional-properties=npmName=goovisite,supportsES6=true,npmVersion=2.0.0 "
         },
         {
             "label": "Clean unused Index",

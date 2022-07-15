@@ -18,6 +18,9 @@ import {
     CreateCompress,
     CreateCompressFromJSON,
     CreateCompressToJSON,
+    CreateTranscode,
+    CreateTranscodeFromJSON,
+    CreateTranscodeToJSON,
     TranscodeQueue,
     TranscodeQueueFromJSON,
     TranscodeQueueToJSON,
@@ -27,8 +30,16 @@ export interface CompressPostRequest {
     createCompress?: CreateCompress;
 }
 
+export interface TranscodeDeleteRequest {
+    id?: string;
+}
+
 export interface TranscodeGetRequest {
     id?: string;
+}
+
+export interface TranscodePostRequest {
+    createTranscode?: CreateTranscode;
 }
 
 /**
@@ -69,6 +80,43 @@ export class TranscodeApi extends runtime.BaseAPI {
     }
 
     /**
+     * Cancel Queue
+     */
+    async transcodeDeleteRaw(requestParameters: TranscodeDeleteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.id !== undefined) {
+            queryParameters['id'] = requestParameters.id;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["token"] = this.configuration.apiKey("token"); // Refresh authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["token"] = this.configuration.apiKey("token"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/transcode`,
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Cancel Queue
+     */
+    async transcodeDelete(requestParameters: TranscodeDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+        await this.transcodeDeleteRaw(requestParameters, initOverrides);
+    }
+
+    /**
      * Get a transcode
      */
     async transcodeGetRaw(requestParameters: TranscodeGetRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TranscodeQueue>> {
@@ -104,6 +152,42 @@ export class TranscodeApi extends runtime.BaseAPI {
     async transcodeGet(requestParameters: TranscodeGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TranscodeQueue> {
         const response = await this.transcodeGetRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Create Queue
+     */
+    async transcodePostRaw(requestParameters: TranscodePostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["token"] = this.configuration.apiKey("token"); // Refresh authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["token"] = this.configuration.apiKey("token"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/transcode`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateTranscodeToJSON(requestParameters.createTranscode),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Create Queue
+     */
+    async transcodePost(requestParameters: TranscodePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+        await this.transcodePostRaw(requestParameters, initOverrides);
     }
 
     /**
