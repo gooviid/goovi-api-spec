@@ -14,14 +14,16 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  CreateCompress,
+  CreateTranscode,
+  TranscodeQueue,
+} from '../models';
 import {
-    CreateCompress,
     CreateCompressFromJSON,
     CreateCompressToJSON,
-    CreateTranscode,
     CreateTranscodeFromJSON,
     CreateTranscodeToJSON,
-    TranscodeQueue,
     TranscodeQueueFromJSON,
     TranscodeQueueToJSON,
 } from '../models';
@@ -50,7 +52,7 @@ export class TranscodeApi extends runtime.BaseAPI {
     /**
      * Create Compress
      */
-    async compressPostRaw(requestParameters: CompressPostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async compressPostRaw(requestParameters: CompressPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -75,14 +77,14 @@ export class TranscodeApi extends runtime.BaseAPI {
     /**
      * Create Compress
      */
-    async compressPost(requestParameters: CompressPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async compressPost(requestParameters: CompressPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.compressPostRaw(requestParameters, initOverrides);
     }
 
     /**
      * Cancel Queue
      */
-    async transcodeDeleteRaw(requestParameters: TranscodeDeleteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async transcodeDeleteRaw(requestParameters: TranscodeDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         if (requestParameters.id !== undefined) {
@@ -112,14 +114,14 @@ export class TranscodeApi extends runtime.BaseAPI {
     /**
      * Cancel Queue
      */
-    async transcodeDelete(requestParameters: TranscodeDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async transcodeDelete(requestParameters: TranscodeDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.transcodeDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      * Get a transcode
      */
-    async transcodeGetRaw(requestParameters: TranscodeGetRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TranscodeQueue>> {
+    async transcodeGetRaw(requestParameters: TranscodeGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TranscodeQueue>> {
         const queryParameters: any = {};
 
         if (requestParameters.id !== undefined) {
@@ -149,7 +151,7 @@ export class TranscodeApi extends runtime.BaseAPI {
     /**
      * Get a transcode
      */
-    async transcodeGet(requestParameters: TranscodeGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TranscodeQueue> {
+    async transcodeGet(requestParameters: TranscodeGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TranscodeQueue> {
         const response = await this.transcodeGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -157,7 +159,7 @@ export class TranscodeApi extends runtime.BaseAPI {
     /**
      * Create Queue
      */
-    async transcodePostRaw(requestParameters: TranscodePostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async transcodePostRaw(requestParameters: TranscodePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -186,14 +188,14 @@ export class TranscodeApi extends runtime.BaseAPI {
     /**
      * Create Queue
      */
-    async transcodePost(requestParameters: TranscodePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async transcodePost(requestParameters: TranscodePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.transcodePostRaw(requestParameters, initOverrides);
     }
 
     /**
      * Get list transcode
      */
-    async transcodesGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<TranscodeQueue>>> {
+    async transcodesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TranscodeQueue>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -219,7 +221,7 @@ export class TranscodeApi extends runtime.BaseAPI {
     /**
      * Get list transcode
      */
-    async transcodesGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<TranscodeQueue>> {
+    async transcodesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TranscodeQueue>> {
         const response = await this.transcodesGetRaw(initOverrides);
         return await response.value();
     }

@@ -14,11 +14,13 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  LoginResponse,
+  SocialLoginReq,
+} from '../models';
 import {
-    LoginResponse,
     LoginResponseFromJSON,
     LoginResponseToJSON,
-    SocialLoginReq,
     SocialLoginReqFromJSON,
     SocialLoginReqToJSON,
 } from '../models';
@@ -35,7 +37,7 @@ export class AuthApi extends runtime.BaseAPI {
     /**
      * Make google login
      */
-    async authGooglePostRaw(requestParameters: AuthGooglePostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
+    async authGooglePostRaw(requestParameters: AuthGooglePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -56,7 +58,7 @@ export class AuthApi extends runtime.BaseAPI {
     /**
      * Make google login
      */
-    async authGooglePost(requestParameters: AuthGooglePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<LoginResponse> {
+    async authGooglePost(requestParameters: AuthGooglePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse> {
         const response = await this.authGooglePostRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -64,7 +66,7 @@ export class AuthApi extends runtime.BaseAPI {
     /**
      * Logout
      */
-    async authLogoutPostRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async authLogoutPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -90,7 +92,7 @@ export class AuthApi extends runtime.BaseAPI {
     /**
      * Logout
      */
-    async authLogoutPost(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async authLogoutPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.authLogoutPostRaw(initOverrides);
     }
 

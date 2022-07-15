@@ -13,32 +13,32 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { BillingDetail } from './BillingDetail';
 import {
-    BillingDetail,
     BillingDetailFromJSON,
     BillingDetailFromJSONTyped,
     BillingDetailToJSON,
 } from './BillingDetail';
+import type { MediaInfo } from './MediaInfo';
 import {
-    MediaInfo,
     MediaInfoFromJSON,
     MediaInfoFromJSONTyped,
     MediaInfoToJSON,
 } from './MediaInfo';
+import type { SourceTranscode } from './SourceTranscode';
 import {
-    SourceTranscode,
     SourceTranscodeFromJSON,
     SourceTranscodeFromJSONTyped,
     SourceTranscodeToJSON,
 } from './SourceTranscode';
+import type { TranscodeError } from './TranscodeError';
 import {
-    TranscodeError,
     TranscodeErrorFromJSON,
     TranscodeErrorFromJSONTyped,
     TranscodeErrorToJSON,
 } from './TranscodeError';
+import type { TranscodeMeta } from './TranscodeMeta';
 import {
-    TranscodeMeta,
     TranscodeMetaFromJSON,
     TranscodeMetaFromJSONTyped,
     TranscodeMetaToJSON,
@@ -140,6 +140,15 @@ export interface TranscodeQueue {
      * @memberof TranscodeQueue
      */
     error?: TranscodeError | null;
+}
+
+/**
+ * Check if a given object implements the TranscodeQueue interface.
+ */
+export function instanceOfTranscodeQueue(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function TranscodeQueueFromJSON(json: any): TranscodeQueue {

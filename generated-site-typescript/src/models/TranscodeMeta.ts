@@ -57,6 +57,15 @@ export interface TranscodeMeta {
     transcodeDuration?: number;
 }
 
+/**
+ * Check if a given object implements the TranscodeMeta interface.
+ */
+export function instanceOfTranscodeMeta(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TranscodeMetaFromJSON(json: any): TranscodeMeta {
     return TranscodeMetaFromJSONTyped(json, false);
 }

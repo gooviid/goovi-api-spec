@@ -39,6 +39,15 @@ export interface TranscodeError {
     errorAt?: Date;
 }
 
+/**
+ * Check if a given object implements the TranscodeError interface.
+ */
+export function instanceOfTranscodeError(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TranscodeErrorFromJSON(json: any): TranscodeError {
     return TranscodeErrorFromJSONTyped(json, false);
 }

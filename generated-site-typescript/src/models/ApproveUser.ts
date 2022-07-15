@@ -33,6 +33,15 @@ export interface ApproveUser {
     acc?: boolean;
 }
 
+/**
+ * Check if a given object implements the ApproveUser interface.
+ */
+export function instanceOfApproveUser(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function ApproveUserFromJSON(json: any): ApproveUser {
     return ApproveUserFromJSONTyped(json, false);
 }

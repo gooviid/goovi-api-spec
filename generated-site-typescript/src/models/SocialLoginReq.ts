@@ -33,6 +33,15 @@ export interface SocialLoginReq {
     appsource?: string;
 }
 
+/**
+ * Check if a given object implements the SocialLoginReq interface.
+ */
+export function instanceOfSocialLoginReq(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function SocialLoginReqFromJSON(json: any): SocialLoginReq {
     return SocialLoginReqFromJSONTyped(json, false);
 }

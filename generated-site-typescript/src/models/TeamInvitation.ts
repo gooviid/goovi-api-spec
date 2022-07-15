@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { TeamMember } from './TeamMember';
 import {
-    TeamMember,
     TeamMemberFromJSON,
     TeamMemberFromJSONTyped,
     TeamMemberToJSON,
@@ -62,6 +62,15 @@ export interface TeamInvitation {
      * @memberof TeamInvitation
      */
     member?: TeamMember;
+}
+
+/**
+ * Check if a given object implements the TeamInvitation interface.
+ */
+export function instanceOfTeamInvitation(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function TeamInvitationFromJSON(json: any): TeamInvitation {

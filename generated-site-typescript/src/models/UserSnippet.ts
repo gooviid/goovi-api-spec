@@ -45,6 +45,15 @@ export interface UserSnippet {
     avatarurl?: string;
 }
 
+/**
+ * Check if a given object implements the UserSnippet interface.
+ */
+export function instanceOfUserSnippet(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function UserSnippetFromJSON(json: any): UserSnippet {
     return UserSnippetFromJSONTyped(json, false);
 }

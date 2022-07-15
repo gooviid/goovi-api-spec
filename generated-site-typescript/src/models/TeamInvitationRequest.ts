@@ -33,6 +33,15 @@ export interface TeamInvitationRequest {
     roles?: Array<string>;
 }
 
+/**
+ * Check if a given object implements the TeamInvitationRequest interface.
+ */
+export function instanceOfTeamInvitationRequest(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TeamInvitationRequestFromJSON(json: any): TeamInvitationRequest {
     return TeamInvitationRequestFromJSONTyped(json, false);
 }

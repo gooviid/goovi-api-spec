@@ -93,6 +93,15 @@ export interface VideoInfo {
     duration?: number;
 }
 
+/**
+ * Check if a given object implements the VideoInfo interface.
+ */
+export function instanceOfVideoInfo(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function VideoInfoFromJSON(json: any): VideoInfo {
     return VideoInfoFromJSONTyped(json, false);
 }

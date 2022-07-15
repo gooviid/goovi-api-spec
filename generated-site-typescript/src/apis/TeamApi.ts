@@ -14,23 +14,25 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  LoginResponse,
+  MyTeamModel,
+  TeamInvitatioUserResponse,
+  TeamInvitation,
+  TeamInvitationRequest,
+  TeamMember,
+} from '../models';
 import {
-    LoginResponse,
     LoginResponseFromJSON,
     LoginResponseToJSON,
-    MyTeamModel,
     MyTeamModelFromJSON,
     MyTeamModelToJSON,
-    TeamInvitatioUserResponse,
     TeamInvitatioUserResponseFromJSON,
     TeamInvitatioUserResponseToJSON,
-    TeamInvitation,
     TeamInvitationFromJSON,
     TeamInvitationToJSON,
-    TeamInvitationRequest,
     TeamInvitationRequestFromJSON,
     TeamInvitationRequestToJSON,
-    TeamMember,
     TeamMemberFromJSON,
     TeamMemberToJSON,
 } from '../models';
@@ -67,7 +69,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Delete team member
      */
-    async teamDeleteRaw(requestParameters: TeamDeleteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<MyTeamModel>> {
+    async teamDeleteRaw(requestParameters: TeamDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MyTeamModel>> {
         const queryParameters: any = {};
 
         if (requestParameters.id !== undefined) {
@@ -97,7 +99,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Delete team member
      */
-    async teamDelete(requestParameters: TeamDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<MyTeamModel> {
+    async teamDelete(requestParameters: TeamDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MyTeamModel> {
         const response = await this.teamDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -105,7 +107,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Get MY Team
      */
-    async teamGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<MyTeamModel>> {
+    async teamGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MyTeamModel>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -131,7 +133,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Get MY Team
      */
-    async teamGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<MyTeamModel> {
+    async teamGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MyTeamModel> {
         const response = await this.teamGetRaw(initOverrides);
         return await response.value();
     }
@@ -139,7 +141,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Get Invitation to me
      */
-    async teamInvitationGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<TeamInvitation>>> {
+    async teamInvitationGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TeamInvitation>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -165,7 +167,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Get Invitation to me
      */
-    async teamInvitationGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<TeamInvitation>> {
+    async teamInvitationGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TeamInvitation>> {
         const response = await this.teamInvitationGetRaw(initOverrides);
         return await response.value();
     }
@@ -173,7 +175,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Response to invitation
      */
-    async teamInvitationPostRaw(requestParameters: TeamInvitationPostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async teamInvitationPostRaw(requestParameters: TeamInvitationPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -202,14 +204,14 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Response to invitation
      */
-    async teamInvitationPost(requestParameters: TeamInvitationPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async teamInvitationPost(requestParameters: TeamInvitationPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.teamInvitationPostRaw(requestParameters, initOverrides);
     }
 
     /**
      * Cancel Invitation
      */
-    async teamInviteDeleteRaw(requestParameters: TeamInviteDeleteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async teamInviteDeleteRaw(requestParameters: TeamInviteDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         if (requestParameters.memberEmail !== undefined) {
@@ -239,14 +241,14 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Cancel Invitation
      */
-    async teamInviteDelete(requestParameters: TeamInviteDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async teamInviteDelete(requestParameters: TeamInviteDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.teamInviteDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      * Get Invitation of team
      */
-    async teamInviteGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<TeamInvitation>>> {
+    async teamInviteGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TeamInvitation>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -272,7 +274,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Get Invitation of team
      */
-    async teamInviteGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<TeamInvitation>> {
+    async teamInviteGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TeamInvitation>> {
         const response = await this.teamInviteGetRaw(initOverrides);
         return await response.value();
     }
@@ -280,7 +282,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Invite a member
      */
-    async teamInvitePostRaw(requestParameters: TeamInvitePostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async teamInvitePostRaw(requestParameters: TeamInvitePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -309,14 +311,14 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Invite a member
      */
-    async teamInvitePost(requestParameters: TeamInvitePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async teamInvitePost(requestParameters: TeamInvitePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.teamInvitePostRaw(requestParameters, initOverrides);
     }
 
     /**
      * Leave from team
      */
-    async teamLeaveDeleteRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
+    async teamLeaveDeleteRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -334,7 +336,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Leave from team
      */
-    async teamLeaveDelete(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<LoginResponse> {
+    async teamLeaveDelete(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse> {
         const response = await this.teamLeaveDeleteRaw(initOverrides);
         return await response.value();
     }
@@ -342,7 +344,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Get Team Member
      */
-    async teamMemberGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<TeamMember>>> {
+    async teamMemberGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TeamMember>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -368,7 +370,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Get Team Member
      */
-    async teamMemberGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<TeamMember>> {
+    async teamMemberGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TeamMember>> {
         const response = await this.teamMemberGetRaw(initOverrides);
         return await response.value();
     }
@@ -376,7 +378,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Get My Membership
      */
-    async teamMembershipGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<TeamMember>>> {
+    async teamMembershipGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TeamMember>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -402,7 +404,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Get My Membership
      */
-    async teamMembershipGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<TeamMember>> {
+    async teamMembershipGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TeamMember>> {
         const response = await this.teamMembershipGetRaw(initOverrides);
         return await response.value();
     }
@@ -410,7 +412,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Set Role of team
      */
-    async teamRolePostRaw(requestParameters: TeamRolePostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async teamRolePostRaw(requestParameters: TeamRolePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -439,14 +441,14 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Set Role of team
      */
-    async teamRolePost(requestParameters: TeamRolePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async teamRolePost(requestParameters: TeamRolePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.teamRolePostRaw(requestParameters, initOverrides);
     }
 
     /**
      * Switch team
      */
-    async teamSwitchGetRaw(requestParameters: TeamSwitchGetRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
+    async teamSwitchGetRaw(requestParameters: TeamSwitchGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
         const queryParameters: any = {};
 
         if (requestParameters.id !== undefined) {
@@ -468,7 +470,7 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Switch team
      */
-    async teamSwitchGet(requestParameters: TeamSwitchGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<LoginResponse> {
+    async teamSwitchGet(requestParameters: TeamSwitchGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse> {
         const response = await this.teamSwitchGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

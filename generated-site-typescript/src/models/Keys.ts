@@ -51,6 +51,15 @@ export interface Keys {
     capabilities?: Array<string>;
 }
 
+/**
+ * Check if a given object implements the Keys interface.
+ */
+export function instanceOfKeys(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function KeysFromJSON(json: any): Keys {
     return KeysFromJSONTyped(json, false);
 }

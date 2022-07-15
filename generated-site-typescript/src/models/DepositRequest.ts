@@ -27,6 +27,15 @@ export interface DepositRequest {
     requestAmount?: number;
 }
 
+/**
+ * Check if a given object implements the DepositRequest interface.
+ */
+export function instanceOfDepositRequest(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function DepositRequestFromJSON(json: any): DepositRequest {
     return DepositRequestFromJSONTyped(json, false);
 }

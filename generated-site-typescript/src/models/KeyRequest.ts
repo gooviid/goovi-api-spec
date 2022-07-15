@@ -33,6 +33,15 @@ export interface KeyRequest {
     capabilities?: Array<string>;
 }
 
+/**
+ * Check if a given object implements the KeyRequest interface.
+ */
+export function instanceOfKeyRequest(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function KeyRequestFromJSON(json: any): KeyRequest {
     return KeyRequestFromJSONTyped(json, false);
 }

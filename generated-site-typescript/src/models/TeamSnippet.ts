@@ -51,6 +51,15 @@ export interface TeamSnippet {
     badge?: string;
 }
 
+/**
+ * Check if a given object implements the TeamSnippet interface.
+ */
+export function instanceOfTeamSnippet(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TeamSnippetFromJSON(json: any): TeamSnippet {
     return TeamSnippetFromJSONTyped(json, false);
 }

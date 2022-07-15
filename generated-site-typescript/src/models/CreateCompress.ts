@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { SourceTranscode } from './SourceTranscode';
 import {
-    SourceTranscode,
     SourceTranscodeFromJSON,
     SourceTranscodeFromJSONTyped,
     SourceTranscodeToJSON,
@@ -56,6 +56,15 @@ export interface CreateCompress {
      * @memberof CreateCompress
      */
     destination?: SourceTranscode;
+}
+
+/**
+ * Check if a given object implements the CreateCompress interface.
+ */
+export function instanceOfCreateCompress(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function CreateCompressFromJSON(json: any): CreateCompress {

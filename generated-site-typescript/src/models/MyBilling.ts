@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { BillingDetail } from './BillingDetail';
 import {
-    BillingDetail,
     BillingDetailFromJSON,
     BillingDetailFromJSONTyped,
     BillingDetailToJSON,
@@ -56,6 +56,15 @@ export interface MyBilling {
      * @memberof MyBilling
      */
     lastUpdate?: Date;
+}
+
+/**
+ * Check if a given object implements the MyBilling interface.
+ */
+export function instanceOfMyBilling(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function MyBillingFromJSON(json: any): MyBilling {

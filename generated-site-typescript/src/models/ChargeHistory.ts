@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { BillingDetail } from './BillingDetail';
 import {
-    BillingDetail,
     BillingDetailFromJSON,
     BillingDetailFromJSONTyped,
     BillingDetailToJSON,
@@ -68,6 +68,15 @@ export interface ChargeHistory {
      * @memberof ChargeHistory
      */
     createdAt?: Date;
+}
+
+/**
+ * Check if a given object implements the ChargeHistory interface.
+ */
+export function instanceOfChargeHistory(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function ChargeHistoryFromJSON(json: any): ChargeHistory {

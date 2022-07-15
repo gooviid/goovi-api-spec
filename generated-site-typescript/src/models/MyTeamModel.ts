@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { TeamSnippet } from './TeamSnippet';
 import {
-    TeamSnippet,
     TeamSnippetFromJSON,
     TeamSnippetFromJSONTyped,
     TeamSnippetToJSON,
@@ -38,6 +38,15 @@ export interface MyTeamModel {
      * @memberof MyTeamModel
      */
     approved?: boolean;
+}
+
+/**
+ * Check if a given object implements the MyTeamModel interface.
+ */
+export function instanceOfMyTeamModel(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function MyTeamModelFromJSON(json: any): MyTeamModel {

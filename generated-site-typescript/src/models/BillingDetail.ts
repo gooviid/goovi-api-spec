@@ -45,6 +45,15 @@ export interface BillingDetail {
     price?: number;
 }
 
+/**
+ * Check if a given object implements the BillingDetail interface.
+ */
+export function instanceOfBillingDetail(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function BillingDetailFromJSON(json: any): BillingDetail {
     return BillingDetailFromJSONTyped(json, false);
 }

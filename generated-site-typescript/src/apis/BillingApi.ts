@@ -14,20 +14,22 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  ChargeHistory,
+  DepositModel,
+  DepositRequest,
+  DepositResponse,
+  MyBilling,
+} from '../models';
 import {
-    ChargeHistory,
     ChargeHistoryFromJSON,
     ChargeHistoryToJSON,
-    DepositModel,
     DepositModelFromJSON,
     DepositModelToJSON,
-    DepositRequest,
     DepositRequestFromJSON,
     DepositRequestToJSON,
-    DepositResponse,
     DepositResponseFromJSON,
     DepositResponseToJSON,
-    MyBilling,
     MyBillingFromJSON,
     MyBillingToJSON,
 } from '../models';
@@ -44,7 +46,7 @@ export class BillingApi extends runtime.BaseAPI {
     /**
      * Get my billing
      */
-    async billingChargeHistoryGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<ChargeHistory>>> {
+    async billingChargeHistoryGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ChargeHistory>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -70,7 +72,7 @@ export class BillingApi extends runtime.BaseAPI {
     /**
      * Get my billing
      */
-    async billingChargeHistoryGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<ChargeHistory>> {
+    async billingChargeHistoryGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ChargeHistory>> {
         const response = await this.billingChargeHistoryGetRaw(initOverrides);
         return await response.value();
     }
@@ -78,7 +80,7 @@ export class BillingApi extends runtime.BaseAPI {
     /**
      * Get deposit history
      */
-    async billingDepositHistoryGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<DepositModel>>> {
+    async billingDepositHistoryGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DepositModel>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -104,7 +106,7 @@ export class BillingApi extends runtime.BaseAPI {
     /**
      * Get deposit history
      */
-    async billingDepositHistoryGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<DepositModel>> {
+    async billingDepositHistoryGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DepositModel>> {
         const response = await this.billingDepositHistoryGetRaw(initOverrides);
         return await response.value();
     }
@@ -112,7 +114,7 @@ export class BillingApi extends runtime.BaseAPI {
     /**
      * Recharge billing
      */
-    async billingDepositRechargePostRaw(requestParameters: BillingDepositRechargePostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DepositResponse>> {
+    async billingDepositRechargePostRaw(requestParameters: BillingDepositRechargePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DepositResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -141,7 +143,7 @@ export class BillingApi extends runtime.BaseAPI {
     /**
      * Recharge billing
      */
-    async billingDepositRechargePost(requestParameters: BillingDepositRechargePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DepositResponse> {
+    async billingDepositRechargePost(requestParameters: BillingDepositRechargePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DepositResponse> {
         const response = await this.billingDepositRechargePostRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -149,7 +151,7 @@ export class BillingApi extends runtime.BaseAPI {
     /**
      * Get my billing
      */
-    async billingGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<MyBilling>> {
+    async billingGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MyBilling>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -175,7 +177,7 @@ export class BillingApi extends runtime.BaseAPI {
     /**
      * Get my billing
      */
-    async billingGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<MyBilling> {
+    async billingGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MyBilling> {
         const response = await this.billingGetRaw(initOverrides);
         return await response.value();
     }

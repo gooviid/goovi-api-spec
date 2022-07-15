@@ -39,6 +39,15 @@ export interface ImageInfo {
     height?: number;
 }
 
+/**
+ * Check if a given object implements the ImageInfo interface.
+ */
+export function instanceOfImageInfo(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function ImageInfoFromJSON(json: any): ImageInfo {
     return ImageInfoFromJSONTyped(json, false);
 }

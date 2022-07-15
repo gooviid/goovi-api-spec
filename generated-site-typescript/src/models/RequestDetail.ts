@@ -45,6 +45,15 @@ export interface RequestDetail {
     validated?: number;
 }
 
+/**
+ * Check if a given object implements the RequestDetail interface.
+ */
+export function instanceOfRequestDetail(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function RequestDetailFromJSON(json: any): RequestDetail {
     return RequestDetailFromJSONTyped(json, false);
 }

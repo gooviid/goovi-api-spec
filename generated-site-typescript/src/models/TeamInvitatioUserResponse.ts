@@ -33,6 +33,15 @@ export interface TeamInvitatioUserResponse {
     response?: boolean;
 }
 
+/**
+ * Check if a given object implements the TeamInvitatioUserResponse interface.
+ */
+export function instanceOfTeamInvitatioUserResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TeamInvitatioUserResponseFromJSON(json: any): TeamInvitatioUserResponse {
     return TeamInvitatioUserResponseFromJSONTyped(json, false);
 }

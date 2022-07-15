@@ -63,6 +63,15 @@ export interface DepositModel {
     createdAt?: Date;
 }
 
+/**
+ * Check if a given object implements the DepositModel interface.
+ */
+export function instanceOfDepositModel(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function DepositModelFromJSON(json: any): DepositModel {
     return DepositModelFromJSONTyped(json, false);
 }

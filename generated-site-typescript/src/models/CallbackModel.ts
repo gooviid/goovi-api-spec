@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { MediaInfo } from './MediaInfo';
 import {
-    MediaInfo,
     MediaInfoFromJSON,
     MediaInfoFromJSONTyped,
     MediaInfoToJSON,
 } from './MediaInfo';
+import type { TranscodeError } from './TranscodeError';
 import {
-    TranscodeError,
     TranscodeErrorFromJSON,
     TranscodeErrorFromJSONTyped,
     TranscodeErrorToJSON,
@@ -56,6 +56,15 @@ export interface CallbackModel {
      * @memberof CallbackModel
      */
     media?: Array<MediaInfo> | null;
+}
+
+/**
+ * Check if a given object implements the CallbackModel interface.
+ */
+export function instanceOfCallbackModel(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function CallbackModelFromJSON(json: any): CallbackModel {

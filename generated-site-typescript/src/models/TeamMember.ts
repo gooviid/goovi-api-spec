@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { TeamSnippet } from './TeamSnippet';
 import {
-    TeamSnippet,
     TeamSnippetFromJSON,
     TeamSnippetFromJSONTyped,
     TeamSnippetToJSON,
 } from './TeamSnippet';
+import type { UserSnippet } from './UserSnippet';
 import {
-    UserSnippet,
     UserSnippetFromJSON,
     UserSnippetFromJSONTyped,
     UserSnippetToJSON,
@@ -62,6 +62,15 @@ export interface TeamMember {
      * @memberof TeamMember
      */
     user?: UserSnippet;
+}
+
+/**
+ * Check if a given object implements the TeamMember interface.
+ */
+export function instanceOfTeamMember(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function TeamMemberFromJSON(json: any): TeamMember {

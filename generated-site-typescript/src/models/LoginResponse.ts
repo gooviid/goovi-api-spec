@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { UserSnippet } from './UserSnippet';
 import {
-    UserSnippet,
     UserSnippetFromJSON,
     UserSnippetFromJSONTyped,
     UserSnippetToJSON,
@@ -62,6 +62,15 @@ export interface LoginResponse {
      * @memberof LoginResponse
      */
     roles?: Array<string>;
+}
+
+/**
+ * Check if a given object implements the LoginResponse interface.
+ */
+export function instanceOfLoginResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function LoginResponseFromJSON(json: any): LoginResponse {

@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { SourceTranscode } from './SourceTranscode';
 import {
-    SourceTranscode,
     SourceTranscodeFromJSON,
     SourceTranscodeFromJSONTyped,
     SourceTranscodeToJSON,
@@ -74,6 +74,15 @@ export interface CreateTranscode {
      * @memberof CreateTranscode
      */
     destination?: SourceTranscode;
+}
+
+/**
+ * Check if a given object implements the CreateTranscode interface.
+ */
+export function instanceOfCreateTranscode(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function CreateTranscodeFromJSON(json: any): CreateTranscode {

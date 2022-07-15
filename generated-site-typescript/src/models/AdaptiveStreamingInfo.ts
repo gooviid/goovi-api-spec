@@ -63,6 +63,15 @@ export interface AdaptiveStreamingInfo {
     fps?: number | null;
 }
 
+/**
+ * Check if a given object implements the AdaptiveStreamingInfo interface.
+ */
+export function instanceOfAdaptiveStreamingInfo(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function AdaptiveStreamingInfoFromJSON(json: any): AdaptiveStreamingInfo {
     return AdaptiveStreamingInfoFromJSONTyped(json, false);
 }

@@ -14,11 +14,13 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  KeyRequest,
+  Keys,
+} from '../models';
 import {
-    KeyRequest,
     KeyRequestFromJSON,
     KeyRequestToJSON,
-    Keys,
     KeysFromJSON,
     KeysToJSON,
 } from '../models';
@@ -39,7 +41,7 @@ export class KeysApi extends runtime.BaseAPI {
     /**
      * Delete Key
      */
-    async keyDeleteRaw(requestParameters: KeyDeleteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async keyDeleteRaw(requestParameters: KeyDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         if (requestParameters.id !== undefined) {
@@ -69,14 +71,14 @@ export class KeysApi extends runtime.BaseAPI {
     /**
      * Delete Key
      */
-    async keyDelete(requestParameters: KeyDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async keyDelete(requestParameters: KeyDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.keyDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      * Get Team Key
      */
-    async keyGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<Keys>>> {
+    async keyGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Keys>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -102,7 +104,7 @@ export class KeysApi extends runtime.BaseAPI {
     /**
      * Get Team Key
      */
-    async keyGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<Keys>> {
+    async keyGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Keys>> {
         const response = await this.keyGetRaw(initOverrides);
         return await response.value();
     }
@@ -110,7 +112,7 @@ export class KeysApi extends runtime.BaseAPI {
     /**
      * Add new key
      */
-    async keyPostRaw(requestParameters: KeyPostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async keyPostRaw(requestParameters: KeyPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -139,7 +141,7 @@ export class KeysApi extends runtime.BaseAPI {
     /**
      * Add new key
      */
-    async keyPost(requestParameters: KeyPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async keyPost(requestParameters: KeyPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.keyPostRaw(requestParameters, initOverrides);
     }
 

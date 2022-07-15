@@ -13,26 +13,26 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { AdaptiveStreamingInfo } from './AdaptiveStreamingInfo';
 import {
-    AdaptiveStreamingInfo,
     AdaptiveStreamingInfoFromJSON,
     AdaptiveStreamingInfoFromJSONTyped,
     AdaptiveStreamingInfoToJSON,
 } from './AdaptiveStreamingInfo';
+import type { AudioInfo } from './AudioInfo';
 import {
-    AudioInfo,
     AudioInfoFromJSON,
     AudioInfoFromJSONTyped,
     AudioInfoToJSON,
 } from './AudioInfo';
+import type { ImageInfo } from './ImageInfo';
 import {
-    ImageInfo,
     ImageInfoFromJSON,
     ImageInfoFromJSONTyped,
     ImageInfoToJSON,
 } from './ImageInfo';
+import type { VideoInfo } from './VideoInfo';
 import {
-    VideoInfo,
     VideoInfoFromJSON,
     VideoInfoFromJSONTyped,
     VideoInfoToJSON,
@@ -104,6 +104,15 @@ export interface MediaInfo {
      * @memberof MediaInfo
      */
     adaptiveStreaming?: AdaptiveStreamingInfo | null;
+}
+
+/**
+ * Check if a given object implements the MediaInfo interface.
+ */
+export function instanceOfMediaInfo(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function MediaInfoFromJSON(json: any): MediaInfo {

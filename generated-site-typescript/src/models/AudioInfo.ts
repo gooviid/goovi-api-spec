@@ -63,6 +63,15 @@ export interface AudioInfo {
     audioChannel?: number;
 }
 
+/**
+ * Check if a given object implements the AudioInfo interface.
+ */
+export function instanceOfAudioInfo(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function AudioInfoFromJSON(json: any): AudioInfo {
     return AudioInfoFromJSONTyped(json, false);
 }
