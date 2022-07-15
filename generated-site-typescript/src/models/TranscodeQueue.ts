@@ -61,6 +61,12 @@ export interface TranscodeQueue {
      * @type {string}
      * @memberof TranscodeQueue
      */
+    merchantGivenId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranscodeQueue
+     */
     queueStatus?: string;
     /**
      * 
@@ -147,6 +153,7 @@ export function TranscodeQueueFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
         
         'queueId': !exists(json, 'queue_id') ? undefined : json['queue_id'],
+        'merchantGivenId': !exists(json, 'merchant_given_id') ? undefined : json['merchant_given_id'],
         'queueStatus': !exists(json, 'queue_status') ? undefined : json['queue_status'],
         'chargeStatus': !exists(json, 'charge_status') ? undefined : json['charge_status'],
         'totalPrice': !exists(json, 'total_price') ? undefined : json['total_price'],
@@ -173,6 +180,7 @@ export function TranscodeQueueToJSON(value?: TranscodeQueue | null): any {
     return {
         
         'queue_id': value.queueId,
+        'merchant_given_id': value.merchantGivenId,
         'queue_status': value.queueStatus,
         'charge_status': value.chargeStatus,
         'total_price': value.totalPrice,

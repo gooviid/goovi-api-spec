@@ -86,6 +86,8 @@ components:
       properties:
         queue_id:
           type: string
+        merchant_given_id:
+          type: string  
         queue_status:
           type: string
         charge_status:
